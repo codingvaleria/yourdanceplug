@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+}
+
+h3,
+h2,
+h1 {
+  color: white;
+}
+
+.home {
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-bar h3 {
+  margin: 0 10px;
+}
+
+.login-search {
+  display: flex;
+  align-items: center;
+}
+
+.login-search h3 {
+  margin: 0 10px;
+}
