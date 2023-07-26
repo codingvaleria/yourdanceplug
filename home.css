@@ -42,3 +42,38 @@ h1 {
 .login-search h3 {
   margin: 0 10px;
 }
+
+.center-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 400px;
+  /* justify-content: center; */
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.caption h1 {
+  font-size: 50px;
+  margin-bottom: 5px;
+}
+
+/* Style the h2 element */
+.caption h2 {
+  font-size: 18px;
+  margin-top: 0px;
+}
+
+.class-button button {
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.class-button button:hover {
+  background-color: white;
+}
