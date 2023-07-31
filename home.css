@@ -58,9 +58,8 @@ h1 {
 
 .fa-solid {
   color: white;
-  margin-right: 40px;
-  border-right: 1px solid grey;
-  padding: 10px;
+  border-right: 1px solid pink;
+  padding-left: 20px;
   padding-right: 20px;
 }
 
@@ -79,20 +78,21 @@ h1 {
 
 .caption h1 {
   font-size: 55px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
-/* Style the h2 element */
 .caption h2 {
-  font-size: 18px;
-  margin-top: 0px;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .class-button button {
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 12px 25px;
   cursor: pointer;
   margin-top: 40px;
+  font-size: 15px;
+  background-color: pink;
 }
 
 .class-button button:hover {
