@@ -1,3 +1,6 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
 body {
   margin: 0;
 }
@@ -24,6 +27,17 @@ h1 {
   align-items: center;
 }
 
+.logo {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+}
+
 .nav-bar {
   display: flex;
   flex: 1;
@@ -32,6 +46,7 @@ h1 {
 
 .nav-bar h3 {
   margin: 0 10px;
+  position: relative;
 }
 
 .login-search {
@@ -48,7 +63,6 @@ h1 {
   flex-direction: column;
   align-items: center;
   margin-top: 400px;
-  /* justify-content: center; */
 }
 
 .caption {
@@ -58,8 +72,8 @@ h1 {
 }
 
 .caption h1 {
-  font-size: 50px;
-  margin-bottom: 5px;
+  font-size: 55px;
+  margin-bottom: 15px;
 }
 
 /* Style the h2 element */
@@ -72,6 +86,7 @@ h1 {
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
+  margin-top: 40px;
 }
 
 .class-button button:hover {
