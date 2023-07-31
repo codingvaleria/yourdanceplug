@@ -145,31 +145,80 @@ h1 {
     height: auto;
   }
 
-  .center-contents {
-    margin-top: 200px;
+  .navbar-contents {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .caption h1 {
-    font-size: 30px;
+  .nav-bar {
+    margin-top: 10px;
   }
 
-  .caption h2 {
-    font-size: 12px;
+  .nav-bar h3 {
+    margin: 10px 0;
+    position: relative;
   }
 
-  .class-button button {
-    font-size: 13px;
+  .login-search {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
   }
 
-  .upcoming-events div {
-    width: 50%;
+  .login-search .fa-solid {
+    padding: 10px;
   }
+}
+.center-contents {
+  margin-top: 200px;
+}
+
+.caption h1 {
+  font-size: 30px;
+}
+
+.caption h2 {
+  font-size: 12px;
+}
+
+.class-button button {
+  font-size: 13px;
+}
+
+.upcoming-events div {
+  width: 50%;
 }
 
 /* Laptop styles (from 769px and above) */
 @media (min-width: 769px) {
   .home {
     height: 800px;
+  }
+
+  .navbar-contents {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .nav-bar {
+    margin-top: 0;
+  }
+
+  .nav-bar h3 {
+    margin: 0 10px;
+    position: relative;
+  }
+
+  .login-search {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 0;
+  }
+
+  .login-search .fa-solid {
+    padding: 20px;
   }
 
   .center-contents {
