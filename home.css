@@ -25,6 +25,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 15px;
 }
 
 .logo {
@@ -51,11 +52,16 @@ h1 {
 
 .login-search {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.login-search h3 {
-  margin: 0 10px;
+.fa-solid {
+  color: white;
+  margin-right: 40px;
+  border-right: 1px solid grey;
+  padding: 10px;
+  padding-right: 20px;
 }
 
 .center-contents {
