@@ -100,7 +100,6 @@ h1 {
 }
 
 .events-gallery {
-  /* padding: 350px 0; */
   margin-top: 100px;
 }
 
@@ -108,10 +107,8 @@ h1 {
   text-align: center;
   margin-top: 0;
   color: rgb(76, 2, 14);
- 
   font-size: 20px;
   text-decoration: underline;
-
 }
 
 .events {
@@ -140,4 +137,58 @@ h1 {
 
 .upcoming-events img {
   width: 100%;
+}
+
+/* Mobile styles (up to 768px) */
+@media (max-width: 768px) {
+  .home {
+    height: auto;
+  }
+
+  .center-contents {
+    margin-top: 200px;
+  }
+
+  .caption h1 {
+    font-size: 30px;
+  }
+
+  .caption h2 {
+    font-size: 12px;
+  }
+
+  .class-button button {
+    font-size: 13px;
+  }
+
+  .upcoming-events div {
+    width: 50%;
+  }
+}
+
+/* Laptop styles (from 769px and above) */
+@media (min-width: 769px) {
+  .home {
+    height: 800px;
+  }
+
+  .center-contents {
+    margin-top: 400px;
+  }
+
+  .caption h1 {
+    font-size: 55px;
+  }
+
+  .caption h2 {
+    font-size: 14px;
+  }
+
+  .class-button button {
+    font-size: 15px;
+  }
+
+  .upcoming-events div {
+    width: 25%;
+  }
 }
