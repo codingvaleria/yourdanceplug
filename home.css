@@ -16,7 +16,7 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 800px;
   display: flex;
   flex-direction: column;
 }
@@ -97,4 +97,47 @@ h1 {
 
 .class-button button:hover {
   background-color: white;
+}
+
+.events-gallery {
+  /* padding: 350px 0; */
+  margin-top: 100px;
+}
+
+.events-gallery h3 {
+  text-align: center;
+  margin-top: 0;
+  color: rgb(76, 2, 14);
+ 
+  font-size: 20px;
+  text-decoration: underline;
+
+}
+
+.events {
+  padding: 100px 0;
+}
+
+.upcoming-events {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.upcoming-events div {
+  text-align: center;
+  padding: 16px;
+  width: 25%;
+}
+
+.upcoming-events p {
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.upcoming-events img {
+  width: 100%;
 }
