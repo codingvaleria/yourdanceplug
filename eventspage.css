@@ -138,3 +138,36 @@ body {
   font-size: 16px;
 }
 
+.events-cards h2 {
+  font-size: 45px;
+}
+
+.date h3 {
+  font-size: 20px;
+  padding-right: 30px;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.details {
+  border-left: 3px solid pink;
+  padding-left: 30px;
+}
+
+.details h3 {
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 1px;
+  padding-bottom: 0px;
+}
+
+.details h4 {
+  padding: 0px;
+  margin-top: 15px;
+}
+
+.details p {
+}
