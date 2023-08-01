@@ -48,21 +48,22 @@ body {
 
 .events {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  align-items: center;
+  margin-left: 250px;
+  margin-right: 250px;
+  width: 100%;
+  justify-content: center;
 }
 
 .search {
-  /* text-align: center; */
   display: flex;
   align-items: center;
-  padding: 20px;
+  width: 100%;
 }
 
 .search-container {
-  width: 900px;
-  /* max-width: 700px; */
+  /* width: 900px; */
+   width: 70%;
   height: 60px;
   display: flex;
   border: 1px solid pink;
@@ -138,6 +139,11 @@ body {
   font-size: 16px;
 }
 
+.events-cards {
+  display: flex;
+  flex-direction: column;
+}
+
 .events-cards h2 {
   font-size: 45px;
 }
@@ -166,8 +172,13 @@ body {
 
 .details h4 {
   padding: 0px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .details p {
+}
+
+.event-poster img {
+  width: 70%;
+  margin-left: 40px;
 }
