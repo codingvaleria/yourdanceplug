@@ -51,7 +51,6 @@ body {
   flex-direction: column;
   margin-left: 250px;
   margin-right: 250px;
-  width: 100%;
   justify-content: center;
 }
 
@@ -62,8 +61,7 @@ body {
 }
 
 .search-container {
-  /* width: 900px; */
-   width: 70%;
+  width: 900px;
   height: 60px;
   display: flex;
   border: 1px solid pink;
