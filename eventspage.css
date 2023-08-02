@@ -66,15 +66,44 @@ body {
 }
 
 #search-icon {
-  color: purple;
+  color: black;
   margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 #search-bar {
-  width: 1050px;
+  width: 930px;
   height: 60px;
   border: none;
   outline: none;
+  font-size: 16px;
+  color: black;
+}
+
+.search-elements {
+  display: flex;
+}
+
+.search-container button {
+  margin-right: 20px;
+  padding: 0px 25px;
+  border: 1px solid pink;
+  border-radius: 25px;
+  background-color: black;
+  color: white;
+}
+
+.search-container button:hover {
+  background-color: pink;
+  color: black;
+  cursor: pointer;
+}
+
+.search-elements p {
+  margin-right: 15px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .events-cards {
