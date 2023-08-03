@@ -5,23 +5,25 @@
 .event-details {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  margin-left: 350px;
-  margin-right: 350px;
+  width: 800px;
+  margin: auto;
 }
 
 .event-details h1 {
-  margin-left: 250px;
-  margin-right: 250px;
-  display: flex;
-  justify-content: flex-start;
   margin-top: 100px;
-  margin-bottom: 50px;
 }
 
 .event-details h3 {
-  margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.event-details img {
+.image-container {
+  width: 50%;
+  margin: auto;
+  height: 100;
+  padding-bottom: 60%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
