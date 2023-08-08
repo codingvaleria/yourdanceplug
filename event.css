@@ -1,3 +1,7 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 .body {
   margin: 0;
 }
@@ -21,6 +25,7 @@
 .event-details p {
   font-size: 18px;
   margin-top: 40px;
+  margin-bottom: 50px;
 }
 
 .image-container {
@@ -35,19 +40,19 @@
 
 .ticket-section {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   border: 1px solid grey;
-  width: 70%;
-  margin-top: 50px;
+  width: 80%;
+  margin-bottom: 0px;
 }
 
 .ticket-section h2 {
-  margin-top: 30px;
   font-size: 40px;
-  margin-bottom: 15px;
   border-bottom: 1px solid grey;
   padding-left: 20px;
   padding-bottom: 15px;
+  margin-bottom: 0px;
 }
 
 .ticket-details {
@@ -56,17 +61,38 @@
 
 .ticket-details p {
   font-size: 20px;
-  padding-right: 30px;
 }
 
 #name {
   font-size: 20px;
   padding-left: 20px;
   padding-right: 200px;
+  text-transform: capitalize;
 }
 
 .counter {
   display: flex;
   justify-content: flex-end;
-  margin-right: 0px;
+}
+
+.counter p {
+  padding-right: 10px;
+}
+
+.ticket-section button {
+  width: 40%;
+  border-radius: 25px;
+  font-size: 20px;
+  margin-left: 300px;
+  margin-bottom: 15px;
+  background-color: black;
+  color: white;
+  padding: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.ticket-section button:hover {
+  background-color: brown;
+  cursor: pointer;
 }
