@@ -7,7 +7,8 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 0px;
-  background-color: pink;
+  background-color: #a41646;
+  color: white;
 }
 
 .logo {
@@ -32,16 +33,26 @@ body {
   position: relative;
 }
 
+.nav-bar h3 {
+  margin: 0 10px;
+  position: relative;
+}
+
+.nav-bar h3:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .login-search {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  color: black;
 }
 
-.login-search .fa-solid {
-  color: black;
-  border-right: 1px solid black;
+.fa-solid {
+  color: #f4e3e6;
+  cursor: pointer;
+  border-right: 1px solid #a41646;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -104,6 +115,11 @@ body {
   margin-right: 15px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.search-elements p:hover {
+  text-decoration: underline;
+  color: rgb(255, 182, 194);
 }
 
 .events-cards {
