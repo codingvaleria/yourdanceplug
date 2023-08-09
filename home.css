@@ -12,7 +12,7 @@ h1 {
 }
 
 .home {
-  background-image: url("background.jpg");
+  background-image: url("event3.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -50,6 +50,11 @@ h1 {
   position: relative;
 }
 
+.nav-bar h3:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .login-search {
   display: flex;
   flex-direction: row;
@@ -58,6 +63,7 @@ h1 {
 
 .fa-solid {
   color: white;
+  cursor: pointer;
   border-right: 1px solid pink;
   padding-left: 20px;
   padding-right: 20px;
@@ -91,12 +97,15 @@ h1 {
   padding: 12px 25px;
   cursor: pointer;
   margin-top: 40px;
-  font-size: 15px;
-  background-color: pink;
+  font-size: 16px;
+  background-color: #a41646;
+  color: white;
+  border-style: hidden;
 }
 
 .class-button button:hover {
   background-color: white;
+  color: black;
 }
 
 .events-gallery {
@@ -106,7 +115,7 @@ h1 {
 .events-gallery h3 {
   text-align: center;
   margin-top: 0;
-  color: rgb(76, 2, 14);
+  color: #a21540;
   font-size: 20px;
   text-decoration: underline;
 }
