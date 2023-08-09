@@ -15,11 +15,19 @@
 
 .event-details h1 {
   margin-top: 100px;
+  color: #a41646;
+
+  /* text-decoration: underline; */
+  font-weight: 250px;
+  margin-bottom: 5px;
 }
 
 .event-details h3 {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-style: oblique;
+  font-size: 18px;
+  color: rgb(87, 29, 38);
 }
 
 .event-details p {
@@ -42,14 +50,15 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  border: 1px solid grey;
+  border: 1px solid #ffc0cb;
   width: 80%;
   margin-bottom: 0px;
 }
 
 .ticket-section h2 {
   font-size: 40px;
-  border-bottom: 1px solid grey;
+  font-weight: bold;
+  border-bottom: 1px solid #ffc0cb;
   padding-left: 20px;
   padding-bottom: 15px;
   margin-bottom: 0px;
@@ -90,6 +99,7 @@
   padding: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
+  border-style: none;
 }
 
 .ticket-section button:hover {
