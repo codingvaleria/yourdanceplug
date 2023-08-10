@@ -1,6 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #fdedf2;
+  background-color: #ffebee;
   margin: 0;
   padding: 0;
   display: flex;
@@ -17,12 +17,17 @@ body {
 .headers-container h2 {
   margin-right: 30px;
   font-size: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
+  cursor: pointer;
+}
+
+.headers-container h2:hover {
+  text-decoration: underline;
+  color: #a41646;
 }
 
 .login-container {
   padding: 40px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 500px;
 }
 
@@ -32,7 +37,8 @@ body {
 
 .form-group label {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .form-group input {
@@ -41,4 +47,40 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
+  font-size: 18px;
+}
+
+.remember-me {
+  display: flex;
+}
+
+.remember-me input {
+  margin-right: 5px;
+  margin-bottom: 50px;
+}
+
+.submit-btn {
+  background-color: #a41646;
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+  padding: 15px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #f55195;
+  color: white;
+}
+
+.password-recovery {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.password-recovery a {
+  color: #a41646;
+  text-decoration: none;
 }
