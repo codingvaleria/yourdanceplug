@@ -106,3 +106,34 @@
   background-color: brown;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .event-details {
+    width: 90%;
+    margin: auto;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+
+  .ticket-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #name {
+    padding-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .counter {
+    justify-content: center;
+  }
+
+  .ticket-section button {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
