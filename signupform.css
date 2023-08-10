@@ -66,3 +66,33 @@ body {
   background-color: #f55195;
   color: white;
 }
+
+/* Media query for screens below 768px (mobile devices) */
+@media (max-width: 767px) {
+  .signup-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .headers-container h2 {
+    font-size: 30px;
+  }
+
+  .form-group input {
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+}
+
+/* Media query for screens min-width: 768px (tablets and above) */
+@media (min-width: 768px) {
+  .login-container {
+    width: 500px;
+  }
+}
+
