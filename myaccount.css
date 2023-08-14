@@ -2,15 +2,51 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url("myaccount.jpeg");
+  background-color: #f4e3e6;
   display: flex;
   flex-direction: column;
+  /* background-image: url("myaccount.jpeg"); */
 }
 
+.my-account-container {
+  background-image: url("myaccount.jpeg");
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-header {
-  color: #fff;
+.dashboard-header {
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  margin: auto;
   font-size: 45px;
-  font-weight: bold;
 }
 
+.my-dashboard {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.my-dashboard-left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-dashboard-left h5 {
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 25px;
+}
+
+.my-dashboard-right p {
+  padding-left: 5px;
+}

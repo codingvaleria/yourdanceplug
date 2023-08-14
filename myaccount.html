@@ -18,7 +18,7 @@
     ></script>
   </head>
   <body>
-    <div class="my-account container">
+    <div class="my-account-container">
       <div class="navbar-contents">
         <div class="logo">
           <img src="./logo.jpg" alt="logo" />
@@ -34,15 +34,19 @@
           <i class="fa-solid fa-cart-shopping"></i>
         </div>
       </div>
-      <div class="">
-        <header>My Account</header>
+      <div class="dashboard-header">
+        <h1>My Account</h1>
         <!-- style={{ backgroundImage: `url(${image})` }} -->
       </div>
-      <div class="my-dashboard">
+    </div>
+    <div class="my-dashboard">
+      <div class="my-dashboard-left">
         <h5>Dashboard</h5>
         <h5>My Tickets</h5>
-        <h6>Settings</h6>
-        <p>Hello user(not user? Log out)</p>
+        <h5>Log out</h5>
+      </div>
+      <div class="my-dashboard-right">
+        <p>Hello User(not User? <a href="home.html"> Log out </a>)</p>
         <p>
           From your account dashboard you can view your recent orders, manage
           your shipping and billing addresses, and edit your password and
