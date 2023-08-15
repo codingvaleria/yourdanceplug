@@ -1,0 +1,28 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+body {
+  margin: 0;
+}
+
+h3,
+h2,
+h1 {
+  color: white;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin-bottom: 0.5rem;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  /* color: white; */
+  display: block;
+  padding: 0.5rem;
+}
