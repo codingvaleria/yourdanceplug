@@ -120,10 +120,6 @@ h1 {
   text-decoration: underline;
 }
 
-.events {
-  padding: 100px 0;
-}
-
 .upcoming-events {
   display: flex;
   flex-wrap: wrap;
@@ -146,10 +142,19 @@ h1 {
   height: 500px;
 }
 
-.upcoming-events p {
-  margin: 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.event-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #a41646;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.event-button:hover {
+  background-color: white;
+  color: #a41646;
 }
 
 .footer {
@@ -247,9 +252,9 @@ h1 {
   font-size: 12px;
 }
 
-.class-button button {
+/* .class-button button {
   font-size: 13px;
-}
+} */
 
 .upcoming-event {
   width: 50%;
