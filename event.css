@@ -16,8 +16,6 @@
 .event-details h1 {
   margin-top: 100px;
   color: #a41646;
-
-  /* text-decoration: underline; */
   font-weight: 250px;
   margin-bottom: 5px;
 }
@@ -94,7 +92,7 @@
   font-size: 20px;
   margin-left: 300px;
   margin-bottom: 15px;
-  background-color: black;
+  background-color: #a41646;
   color: white;
   padding: 15px;
   padding-top: 8px;
@@ -103,7 +101,8 @@
 }
 
 .ticket-section button:hover {
-  background-color: brown;
+  background-color: white;
+  color: #a41646;
   cursor: pointer;
 }
 
