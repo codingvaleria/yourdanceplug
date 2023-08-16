@@ -17,8 +17,12 @@ li {
   list-style: none;
 }
 
+.admin-dashboard {
+  display: flex;
+}
+
 .side-menu {
-  position: fixed;
+  /* position: fixed; */
   background-color: #a41646;
   width: 20vw;
   min-height: 100vh;
@@ -56,16 +60,18 @@ li {
 }
 
 .container {
-  position: absolute;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
   right: 0;
   width: 80vw;
   height: 100vh;
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  right: 0;
+  /* position: fixed; */
+  /* top: 0;
+  right: 0; */
   width: 80vw;
   height: 10vh;
   display: flex;
@@ -123,4 +129,56 @@ li {
 .add-new-btn:hover {
   background-color: white;
   color: #a41646;
+}
+
+.content {
+  position: relative;
+  /* margin-top: 10vh; */
+  min-height: 90vh;
+}
+
+.content-2 {
+  min-height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.recent-payments {
+  min-height: 50vh;
+  flex: 5;
+  background: red;
+  margin: 75px 25px 25px 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.new-students {
+  flex: 2;
+  background-color: brown;
+  min-height: 50vh;
+  margin: 75px 25px 25px 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px 10px;
+  border-bottom: 2px solid white;
+}
+
+.table {
+  padding: 10px;
+}
+
+.th,
+td {
+  text-align: left;
+  padding: 8px;
 }
