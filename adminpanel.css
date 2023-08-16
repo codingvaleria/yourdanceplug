@@ -8,7 +8,7 @@ body {
 h3,
 h2,
 h1 {
-  color: white;
+  /* color: white; */
 }
 
 .nav-menu {
@@ -25,4 +25,11 @@ h1 {
   /* color: white; */
   display: block;
   padding: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #444;
+  color: white;
 }
