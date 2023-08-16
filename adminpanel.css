@@ -11,7 +11,6 @@ body {
 
 h1 {
   color: white;
- 
 }
 
 li {
@@ -48,6 +47,83 @@ li {
   cursor: pointer;
 }
 
-.container{
-  
+.container {
+  position: absolute;
+  right: 0;
+  width: 80vw;
+  height: 100vh;
+  background: #f1f1f1;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80vw;
+  height: 10vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav {
+  width: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  flex: 2.5;
+  display: flex;
+  justify-content: center;
+  outline: none;
+  border-radius: 16px;
+  border: 2px solid pink;
+}
+
+.search input[type="text"] {
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+
+/* .search button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.search.fa-solid {
+  cursor: pointer;
+}
+
+.user {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.add-new-btn {
+  background-color: #a41646;
+  border-radius: 25px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.add-new-btn:hover {
+  background-color: white;
+  color: #a41646;
 }
