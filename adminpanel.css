@@ -24,6 +24,8 @@ li {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .general {
@@ -33,17 +35,23 @@ li {
   justify-content: center;
 }
 
+.general h1 {
+  font-size: 28px;
+}
+
 .side-menu li {
-  font-size: 24px;
-  padding: 10px 40px;
+  font-size: 18px;
   color: white;
   display: flex;
   align-items: center;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 8px 20px;
 }
 
 .side-menu li:hover {
-  background-color: white;
-  color: #f05462;
+  background-color: #f1f1f1;
+  color: #a41646;
   cursor: pointer;
 }
 
@@ -92,15 +100,6 @@ li {
   border-radius: 25px;
   margin-left: 10px;
 }
-
-/* .search button {
-  width: 40px;
-  height: 40px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
 
 .search.fa-solid {
   cursor: pointer;
