@@ -22,9 +22,8 @@ li {
 }
 
 .side-menu {
-  /* position: fixed; */
   background-color: #a41646;
-  width: 20vw;
+  width: 40vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,14 +31,14 @@ li {
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-.general {
+.admin-menu {
   height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.general h1 {
+.admin-menu h1 {
   font-size: 28px;
 }
 
@@ -59,8 +58,7 @@ li {
   cursor: pointer;
 }
 
-.container {
-  /* position: absolute; */
+.main-menu {
   display: flex;
   flex-direction: column;
   right: 0;
@@ -69,9 +67,6 @@ li {
 }
 
 .header {
-  /* position: fixed; */
-  /* top: 0;
-  right: 0; */
   width: 80vw;
   height: 10vh;
   display: flex;
@@ -133,7 +128,6 @@ li {
 
 .content {
   position: relative;
-  /* margin-top: 10vh; */
   min-height: 90vh;
 }
 
@@ -145,20 +139,10 @@ li {
   flex-wrap: wrap;
 }
 
-.recent-payments {
+.events-table {
   min-height: 50vh;
   flex: 5;
   background: red;
-  margin: 75px 25px 25px 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-}
-
-.new-students {
-  flex: 2;
-  background-color: brown;
-  min-height: 50vh;
   margin: 75px 25px 25px 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
