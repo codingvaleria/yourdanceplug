@@ -134,15 +134,16 @@ li {
 .content-2 {
   min-height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  /* justify-content: space-around;
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 
 .events-table {
   min-height: 50vh;
-  flex: 5;
-  background: red;
+
   margin: 75px 25px 25px 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -152,9 +153,9 @@ li {
 .title {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   padding: 15px 10px;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
 }
 
 .table {
