@@ -36,13 +36,14 @@ body {
 
 .form-inputs {
   margin-bottom: 20px;
-  width: 600px;
+  width: 90%;
 }
 
 .form-inputs label {
   display: flex;
   margin-bottom: 5px;
   font-size: 16px;
+  width: 150px;
 }
 
 .form-inputs input,
@@ -67,7 +68,7 @@ body {
   color: white;
   width: 90%;
   font-size: 18px;
-  padding: 15px 10px;
+  padding: 15px 15px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
