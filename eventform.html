@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="eventform.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Add Event Form</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <form class = "event-form">
+        <h2>Add Event Form</h2>
+        <div class="form-inputs">
+          <label for="event-name"> Event Name: </label>
+          <input type="text" name="event-name" />
+        </div>
+        <div class="form-inputs">
+          <label for="event-location"> Location: </label>
+          <input type="text" name="event-location" />
+        </div>
+        <div class="form-inputs">
+          <label for="event-name"> Category: </label>
+          <select id="event-category" name="event-category">
+            <option value="weekly-social">Weekly Social</option>
+            <option value="bootcamp">Bootcamp</option>
+            <option value="festival">Festival</option>
+          </select>
+        </div>
+        <div class="form-inputs">
+          <label for="event-image"> Poster: </label>
+          <input type="text" name="event-poster" />
+        </div>
+        <div class="form-inputs">
+          <label for="event-description"> Description: </label>
+          <input type="text" name="event-description" />
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Submit Event" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
