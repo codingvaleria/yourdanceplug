@@ -12,8 +12,8 @@
   </head>
   <body>
     <div class="form-container">
-      <form class = "event-form">
-        <h2>Add Event Form</h2>
+      <h2>Add Event Form</h2>
+      <form class="event-form">
         <div class="form-inputs">
           <label for="event-name"> Event Name: </label>
           <input type="text" name="event-name" />
@@ -23,7 +23,7 @@
           <input type="text" name="event-location" />
         </div>
         <div class="form-inputs">
-          <label for="event-name"> Category: </label>
+          <label for="event-category"> Category: </label>
           <select id="event-category" name="event-category">
             <option value="weekly-social">Weekly Social</option>
             <option value="bootcamp">Bootcamp</option>
@@ -38,9 +38,7 @@
           <label for="event-description"> Description: </label>
           <input type="text" name="event-description" />
         </div>
-        <div class="form-group">
-          <input type="submit" value="Submit Event" />
-        </div>
+        <button class="event-submit-btn" type="submit">Submit Event</button>
       </form>
     </div>
   </body>
