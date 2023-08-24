@@ -1,5 +1,10 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 body {
   margin: 0px;
+  box-sizing: border-box;
 }
 
 .navbar-contents {
@@ -52,7 +57,7 @@ body {
 .fa-solid {
   color: #f4e3e6;
   cursor: pointer;
-  border-right: 1px solid #a41646;
+  border-right: 1px solid pink;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -74,6 +79,7 @@ body {
   align-items: center;
   border: 1px solid pink;
   padding-left: 10px;
+  border-radius: 35px;
 }
 
 #search-icon {
@@ -96,19 +102,19 @@ body {
   display: flex;
 }
 
-.search-container button {
-  margin-right: 20px;
-  padding: 0px 25px;
-  border: 1px solid pink;
-  border-radius: 25px;
-  background-color: black;
+.search-elements button {
+  border-radius: 35px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #a41646;
   color: white;
+  border-style: hidden;
 }
 
-.search-container button:hover {
-  background-color: pink;
-  color: black;
-  cursor: pointer;
+.search-elements button:hover {
+  background-color: white;
+  color: #a41646;
 }
 
 .search-elements p {
