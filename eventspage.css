@@ -146,6 +146,21 @@ body {
   display: flex;
   flex-direction: row;
 }
+.event-poster {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 400px;
+}
+
+.event-image {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 400px;
+}
 
 .details {
   border-left: 3px solid pink;
@@ -180,10 +195,10 @@ body {
   cursor: pointer;
 }
 
-.event-poster img {
+/* .event-poster div {
   width: 70%;
   margin-left: 40px;
-}
+} */
 
 /* Default styles for all screen sizes */
 body {
@@ -246,11 +261,6 @@ body {
     padding-left: 0;
     text-align: center;
   }
-
-  .event-poster img {
-    width: 100%;
-    margin-left: 0;
-  }
 }
 
 /* Media query for screens above 768px (laptops and desktops) */
@@ -305,8 +315,8 @@ body {
     padding-left: 30px;
   }
 
-  .event-poster img {
+  /* .event-poster img {
     width: 70%;
     margin-left: 40px;
-  }
+  } */
 }
