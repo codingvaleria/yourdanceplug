@@ -125,7 +125,7 @@ body {
 
 .search-elements p:hover {
   text-decoration: underline;
-  color: rgb(255, 182, 194);
+  color: #a41646;
 }
 
 .events-cards {
@@ -162,6 +162,22 @@ body {
 .details h4 {
   padding: 0px;
   margin-top: 10px;
+}
+
+.get-event-tickets {
+  border-style: none;
+  padding: 12px 32px;
+  background-color: #a41646;
+  color: white;
+  text-decoration: none;
+  border-radius: 18px;
+  margin-top: 10px;
+}
+
+.get-event-tickets:hover {
+  background-color: white;
+  color: #a41646;
+  cursor: pointer;
 }
 
 .event-poster img {
