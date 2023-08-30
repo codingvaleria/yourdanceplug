@@ -139,14 +139,28 @@ li {
 }
 
 .events-table {
-  min-height: 50vh;
   margin: 75px 25px 25px 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
 }
 
-.title {
+.users-table {
+  margin: 75px 25px 25px 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.events-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px 10px;
+  border-bottom: 2px solid white;
+}
+
+.user-title {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -181,4 +195,3 @@ td {
 td:first-child {
   font-weight: bold;
 }
-
