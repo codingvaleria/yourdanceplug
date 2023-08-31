@@ -14,7 +14,7 @@
 }
 
 .event-details h1 {
-  margin-top: 100px;
+  /* margin-top: 100px; */
   color: #a41646;
   font-weight: 250px;
   margin-bottom: 5px;
@@ -23,9 +23,10 @@
 .event-details h3 {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-style: oblique;
+  /* font-style: oblique; */
+  font-weight: lighter;
   font-size: 18px;
-  color: rgb(87, 29, 38);
+  color: #a41646;
 }
 
 .event-details p {
@@ -46,11 +47,14 @@
 
 .ticket-section {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  border: 2px solid #ffc0cb;
+  /* width: 50%; */
+  /* justify-content: space-evenly;
   flex-direction: column;
   border: 1px solid #ffc0cb;
   width: 80%;
-  margin-bottom: 0px;
+  margin-bottom: 0px; */
 }
 
 .ticket-section h2 {
@@ -64,10 +68,12 @@
 
 .ticket-details {
   display: flex;
+  /* flex-direction: column; */
 }
 
 .ticket-details p {
   font-size: 20px;
+  margin-right: 50px;
 }
 
 #name {
@@ -77,14 +83,15 @@
   text-transform: capitalize;
 }
 
-.counter {
+.counter  {
   display: flex;
-  justify-content: flex-end;
+
+  /* justify-content: space-evenly; */
 }
 
-.counter p {
+/* .counter p {
   padding-right: 10px;
-}
+} */
 
 .ticket-section button {
   width: 40%;
@@ -121,14 +128,14 @@
     align-items: center;
   }
 
-  #name {
+  /* #name {
     padding-right: 0;
     margin-bottom: 10px;
-  }
+  } */
 
-  .counter {
+  /* .counter {
     justify-content: center;
-  }
+  } */
 
   .ticket-section button {
     width: 60%;
