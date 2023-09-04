@@ -21,3 +21,23 @@ class Event {
     this.tickets = [];
   }
 }
+
+class Ticket {
+  constructor(obj) {
+    this.id = obj.id;
+    this.user = obj.user;
+    this.event = obj.event;
+    this.ticketNumber = obj.ticketNumber;
+    this.payment = obj.payment;
+  }
+}
+
+class Payment {
+  constructor(obj) {
+    this.id = obj.id;
+    this.user = obj.user;
+    this.event = obj.event;
+    this.amount = obj.amount;
+    this.timestamp = obj.timestamp;
+  }
+}
