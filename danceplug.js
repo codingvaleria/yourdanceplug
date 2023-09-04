@@ -15,8 +15,8 @@ class Event {
     this.category = obj.category;
     this.poster = obj.poster;
     this.description = obj.description;
-    this.date = obj.date;
-    this.totalticketavailable = obj.totalticketavailable;
+    this.eventdate = obj.eventdate;
+    this.ticketsavailable = obj.ticketsavailable;
     this.ticketprice = obj.ticketprice;
     this.tickets = [];
   }
