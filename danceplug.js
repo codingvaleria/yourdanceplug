@@ -58,109 +58,158 @@ class Ticket {
     this.payment = obj.payment;
   }
 }
-class User {
+
+class Event {
   constructor(db, obj) {
     this.db = db;
     this.id = obj.id;
-    this.username = obj.username;
-    this.password = obj.password;
+    this.eventname = obj.eventname;
+    this.location = obj.location;
+    this.category = obj.category;
+    this.poster = obj.poster;
+    this.description = obj.description;
+    this.eventdate = obj.eventdate;
+    this.ticketsavailable = obj.ticketsavailable;
+    this.ticketprice = obj.ticketprice;
     this.tickets = [];
   }
 
-  addUser() {
-    const existingUser = this.db.selectById("users", this.id);
-
-    if (existingUser) {
-      const updatedUserData = {
-        id: this.id,
-        username: this.username,
-        password: this.password,
-        tickets: this.tickets,
-      };
-      this.db.update("users", this.id, updatedUserData);
-    } else {
-      const newUser = {
-        id: this.id,
-        username: this.username,
-        password: this.password,
-        tickets: this.tickets,
-      };
-      this.db.insert("users", newUser);
-    }
-  }
-
-  updateUser() {
-    const updatedUserData = {
+  createEvent() {
+    const newEvent = {
       id: this.id,
-      username: this.username,
-      password: this.password,
-      tickets: this.tickets,
+      eventname: this.eventname,
+      location: this.location,
+      category: this.category,
+      poster: this.poster,
+      description: this.description,
+      eventdate: this.eventdate,
+      ticketsavailable: this.ticketsavailable,
+      ticketprice: this.ticketprice,
+      tickets: [],
     };
-    this.db.update("users", this.id, updatedUserData);
+
+    this.db.insert("events", newEvent);
   }
 
-  purchaseTicket(obj) {
-    const ticket = new Ticket(db, obj);
-    this.tickets.push(ticket);
-    this.updateUser();
-    return ticket;
-  }
+  updateEvent(updatedData) {
+    const existingEvent = this.db.selectById("events", this.id);
 
-  login(password) {
-    if (this.password === password) {
-      return true;
-    } else {
-      return "invalid password";
+    if (existingEvent) {
+      const updatedEvent = { ...existingEvent, ...updatedData };
+      this.db.update("events", this.id, updatedEvent);
     }
   }
 
-  changePassword(newPassword) {
-    this.password = newPassword;
-    this.updateUser();
+  viewEvent() {
+    return this.db.selectById("events", this.id);
+  }
+
+  deleteEvent() {
+    this.db.delete("events", this.id);
   }
 }
 
-let user1 = new User(db, {
+let event1 = new Event(db, {
   id: 1,
-  username: "user1",
-  password: "user123",
+  eventname: "event1",
+  location: "location1",
+  category: "social",
+  poster: "event1poster",
+  description: "event1description",
+  eventdate: "event1date",
+  ticketsavailable: "ticketsavailable",
+  ticketprice: "ticket1price",
+  tickets: [],
 });
 
-console.log(user1);
-// let object1 = {
-//   id: 5,
-//   user: "user1",
-//   event: "event1",
-// };
-// console.log(user1.purchaseTicket(object1));
-user1.username = "valeria"
-console.log(user1)
-
-console.log(user1.login("dffg"))
-user1.changePassword("hdjks")
-console.log(user1);
-
-// class Event {
-//   constructor(obj) {
+console.log(event1);
+// // class Payment {
+// //   constructor(obj) {
+// //     thisid = obj.id;
+// //     this.user = obj.user;
+// //     this.event = obj.event;
+// //     this.amount = obj.amount;
+// //     this.timestamp = obj.timestamp;
+// //   }
+// // }
+// class User {
+//   constructor(db, obj) {
+//     this.db = db;
 //     this.id = obj.id;
-//     this.eventname = obj.eventname;
-//     this.location = obj.location;
-//     this.category = obj.category;
-//     this.poster = obj.poster;
-//     this.description = obj.description;
-//     this.eventdate = obj.eventdate;
-//     this.ticketsavailable = obj.ticketsavailable;
-//     this.ticketprice = obj.ticketprice;
+//     this.username = obj.username;
+//     this.password = obj.password;
 //     this.tickets = [];
 //   }
-// }
 
-// class Payment {
-//   constructor(obj) {
-//     this.id = obj.id;
-//     this.user = obj.user;
-//     this.event = obj.event;
-//     this.amount = obj.amount;
-//     this.timestamp = obj.timestamp;
+//   addUser() {
+//     const existingUser = this.db.selectById("users", this.id);
+
+//     if (existingUser) {
+//       const updatedUserData = {
+//         id: this.id,
+//         username: this.username,
+//         password: this.password,
+//         tickets: this.tickets,
+//       };
+//       this.db.update("users", this.id, updatedUserData);
+//     } else {
+//       const newUser = {
+//         id: this.id,
+//         username: this.username,
+//         password: this.password,
+//         tickets: this.tickets,
+//       };
+//       this.db.insert("users", newUser);
+//     }
+//   }
+
+//   updateUser() {
+//     const updatedUserData = {
+//       id: this.id,
+//       username: this.username,
+//       password: this.password,
+//       tickets: this.tickets,
+//     };
+//     this.db.update("users", this.id, updatedUserData);
+//   }
+
+//   purchaseTicket(obj) {
+//     const ticket = new Ticket(db, obj);
+//     this.tickets.push(ticket);
+//     this.updateUser();
+//     return ticket;
+//   }
+
+//   login(password) {
+//     if (this.password === password) {
+//       return true;
+//     } else {
+//       return "invalid password";
+//     }
+//   }
+
+//   changePassword(newPassword) {
+//     this.password = newPassword;
+//     this.updateUser();
 //   }
 // }
+
+// let user1 = new User(db, {
+//   id: 1,
+//   username: "user1",
+//   password: "user123",
+// });
+
+// console.log(user1);
+// // let object1 = {
+// //   id: 5,
+// //   user: "user1",
+// //   event: "event1",
+// // };
+// // console.log(user1.purchaseTicket(object1));
+// user1.username = "valeria";
+// console.log(user1);
+
+// console.log(user1.login("dffg"));
+// user1.changePassword("hdjks");
+// console.log(user1);
