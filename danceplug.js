@@ -89,10 +89,34 @@ class User {
     }
   }
 
+  updateUser() {
+    const updatedUserData = {
+      id: this.id,
+      username: this.username,
+      password: this.password,
+      tickets: this.tickets,
+    };
+    this.db.update("users", this.id, updatedUserData);
+  }
+
   purchaseTicket(obj) {
     const ticket = new Ticket(db, obj);
     this.tickets.push(ticket);
+    this.updateUser();
     return ticket;
+  }
+
+  login(password) {
+    if (this.password === password) {
+      return true;
+    } else {
+      return "invalid password";
+    }
+  }
+
+  changePassword(newPassword) {
+    this.password = newPassword;
+    this.updateUser();
   }
 }
 
@@ -103,12 +127,18 @@ let user1 = new User(db, {
 });
 
 console.log(user1);
-let object1 = {
-  id: 5,
-  user: "user1",
-  event: "event1",
-};
-console.log(user1.purchaseTicket(object1));
+// let object1 = {
+//   id: 5,
+//   user: "user1",
+//   event: "event1",
+// };
+// console.log(user1.purchaseTicket(object1));
+user1.username = "valeria"
+console.log(user1)
+
+console.log(user1.login("dffg"))
+user1.changePassword("hdjks")
+console.log(user1);
 
 // class Event {
 //   constructor(obj) {
