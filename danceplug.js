@@ -48,17 +48,6 @@ class InMemoryDatabase {
 
 const db = new InMemoryDatabase();
 
-class Ticket {
-  constructor(db, obj) {
-    this.db = db;
-    this.id = obj.id;
-    this.user = obj.user;
-    this.event = obj.event;
-    this.ticketNumber = obj.ticketNumber;
-    this.payment = obj.payment;
-  }
-}
-
 class Event {
   constructor(db, obj) {
     this.db = db;
@@ -108,7 +97,7 @@ class Event {
     this.db.delete("events", this.id);
   }
 }
-
+// Create Event
 let event1 = new Event(db, {
   id: 1,
   eventname: "event1",
@@ -123,93 +112,204 @@ let event1 = new Event(db, {
 });
 
 console.log(event1);
-// // class Payment {
-// //   constructor(obj) {
-// //     thisid = obj.id;
-// //     this.user = obj.user;
-// //     this.event = obj.event;
-// //     this.amount = obj.amount;
-// //     this.timestamp = obj.timestamp;
-// //   }
-// // }
-// class User {
-//   constructor(db, obj) {
-//     this.db = db;
-//     this.id = obj.id;
-//     this.username = obj.username;
-//     this.password = obj.password;
-//     this.tickets = [];
-//   }
 
-//   addUser() {
-//     const existingUser = this.db.selectById("users", this.id);
+class Ticket {
+  constructor(db, obj) {
+    this.db = db;
+    this.id = obj.id;
+    this.user = obj.user;
+    this.event = obj.event;
+    this.ticketNumber = obj.ticketNumber; //how do I let the system to generate ticket numbers on its own?
+    this.payment = obj.payment;
+  }
 
-//     if (existingUser) {
-//       const updatedUserData = {
-//         id: this.id,
-//         username: this.username,
-//         password: this.password,
-//         tickets: this.tickets,
-//       };
-//       this.db.update("users", this.id, updatedUserData);
-//     } else {
-//       const newUser = {
-//         id: this.id,
-//         username: this.username,
-//         password: this.password,
-//         tickets: this.tickets,
-//       };
-//       this.db.insert("users", newUser);
-//     }
-//   }
+  createTicket() {
+    const newTicket = {
+      id: this.id,
+      user: this.user,
+      event: this.event,
+      ticketNumber: this.ticketNumber,
+      payment: this.payment,
+    };
 
-//   updateUser() {
-//     const updatedUserData = {
-//       id: this.id,
-//       username: this.username,
-//       password: this.password,
-//       tickets: this.tickets,
-//     };
-//     this.db.update("users", this.id, updatedUserData);
-//   }
+    this.db.insert("tickets", newTicket);
+  }
 
-//   purchaseTicket(obj) {
-//     const ticket = new Ticket(db, obj);
-//     this.tickets.push(ticket);
-//     this.updateUser();
-//     return ticket;
-//   }
+  viewTicket() {
+    return this.db.selectById("tickets", this.id);
+  }
 
-//   login(password) {
-//     if (this.password === password) {
-//       return true;
-//     } else {
-//       return "invalid password";
-//     }
-//   }
+  getTicket(payment) {
+    if (this.ticketsavailable > 0) {
+      const newTicket = {
+        id: this.id,
+        user: this.user,
+        event: this.event,
+        ticketNumber: this.ticketNumber,
+        payment: payment,
+      };
 
-//   changePassword(newPassword) {
-//     this.password = newPassword;
-//     this.updateUser();
-//   }
-// }
+      this.db.insert("tickets", newTicket);
+      this.ticketsavailable -= 1;
+      this.db.update("events", this.event, {
+        ticketsavailable: this.ticketsavailable,
+      });
+      return newTicket;
+    } else {
+      return "No tickets available.";
+    }
+  }
+}
 
-// let user1 = new User(db, {
+//Create a ticket
+const ticketData = {
+  id: 1,
+  user: "user1",
+  event: event1.id,
+  ticketNumber: "A123",
+  payment: null,
+};
+
+const ticket1 = new Ticket(db, ticketData);
+
+ticket1.createTicket();
+
+const createdTicket = ticket1.viewTicket();
+
+console.log("Created Ticket:", createdTicket);
+
+class User {
+  constructor(db, obj) {
+    this.db = db;
+    this.id = obj.id;
+    this.username = obj.username;
+    this.password = obj.password;
+    this.tickets = [];
+  }
+
+  addUser() {
+    const existingUser = this.db.selectById("users", this.id);
+
+    if (existingUser) {
+      const updatedUserData = {
+        id: this.id,
+        username: this.username,
+        password: this.password,
+        tickets: this.tickets,
+      };
+      this.db.update("users", this.id, updatedUserData);
+    } else {
+      const newUser = {
+        id: this.id,
+        username: this.username,
+        password: this.password,
+        tickets: this.tickets,
+      };
+      this.db.insert("users", newUser);
+    }
+  }
+
+  updateUser() {
+    const updatedUserData = {
+      id: this.id,
+      username: this.username,
+      password: this.password,
+      tickets: this.tickets,
+    };
+    this.db.update("users", this.id, updatedUserData);
+  }
+
+  purchaseTicket(obj) {
+    const ticket = new Ticket(db, obj);
+    this.tickets.push(ticket);
+    this.updateUser();
+    return ticket;
+  }
+
+  login(password) {
+    if (this.password === password) {
+      return true;
+    } else {
+      return "invalid password";
+    }
+  }
+
+  changePassword(newPassword) {
+    this.password = newPassword;
+    this.updateUser();
+  }
+}
+// Create User
+let user1 = new User(db, {
+  id: 1,
+  username: "user1",
+  password: "user123",
+});
+
+console.log(user1);
+let object1 = {
+  id: 5,
+  user: "user1",
+  event: "event1",
+};
+console.log(user1.purchaseTicket(object1));
+user1.username = "valeria";
+console.log(user1);
+
+console.log(user1.login("dffg"));
+user1.changePassword("hdjks");
+console.log(user1);
+
+class Payment {
+  constructor(db, obj) {
+    this.db = db;
+    this.id = obj.id;
+    this.user = obj.user;
+    this.event = obj.event;
+    this.amount = obj.amount;
+    this.timestamp = obj.timestamp;
+  }
+
+  createPayment() {
+    const newPayment = {
+      id: this.id,
+      user: this.user,
+      event: this.event,
+      amount: this.amount,
+      timestamp: this.timestamp,
+    };
+
+    this.db.insert("payments", newPayment);
+  }
+
+  viewPayment() {
+    return this.db.selectById("payments", this.id);
+  }
+}
+// Create Payment
+const paymentData = {
+  id: 1,
+  user: "user1",
+  event: "event1",
+  amount: 50,
+  timestamp: Date.now(),
+};
+const payment = new Payment(db, paymentData);
+// console.log(payment);
+
+// Creating and booking a ticket
+// const ticketData = {
 //   id: 1,
-//   username: "user1",
-//   password: "user123",
-// });
+//   user: "user1",
+//   event: "event1",
+//   ticketNumber: "A123",
+//   payment: payment.id,
+// };
+const ticket = new Ticket(db, ticketData);
+const bookingResult = ticket.getTicket(payment.id);
 
-// console.log(user1);
-// // let object1 = {
-// //   id: 5,
-// //   user: "user1",
-// //   event: "event1",
-// // };
-// // console.log(user1.purchaseTicket(object1));
-// user1.username = "valeria";
-// console.log(user1);
-
-// console.log(user1.login("dffg"));
-// user1.changePassword("hdjks");
-// console.log(user1);
+if (bookingResult === "No tickets available.") {
+  console.log("Booking failed: No tickets available.");
+} else {
+  console.log("Ticket booked successfully:", bookingResult);
+}
