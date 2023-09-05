@@ -47,15 +47,27 @@ class InMemoryDatabase {
 }
 
 const db = new InMemoryDatabase();
+
+class Ticket {
+  constructor(db, obj) {
+    this.db = db;
+    this.id = obj.id;
+    this.user = obj.user;
+    this.event = obj.event;
+    this.ticketNumber = obj.ticketNumber;
+    this.payment = obj.payment;
+  }
+}
 class User {
   constructor(db, obj) {
     this.db = db;
     this.id = obj.id;
     this.username = obj.username;
     this.password = obj.password;
+    this.tickets = [];
   }
 
-  save() {
+  addUser() {
     const existingUser = this.db.selectById("users", this.id);
 
     if (existingUser) {
@@ -63,6 +75,7 @@ class User {
         id: this.id,
         username: this.username,
         password: this.password,
+        tickets: this.tickets,
       };
       this.db.update("users", this.id, updatedUserData);
     } else {
@@ -70,29 +83,32 @@ class User {
         id: this.id,
         username: this.username,
         password: this.password,
+        tickets: this.tickets,
       };
       this.db.insert("users", newUser);
     }
+  }
+
+  purchaseTicket(obj) {
+    const ticket = new Ticket(db, obj);
+    this.tickets.push(ticket);
+    return ticket;
   }
 }
 
 let user1 = new User(db, {
   id: 1,
   username: "user1",
-  password: "user1#123",
+  password: "user123",
 });
 
-user1.save();
-
-let user2 = new User(db, {
-  id: 2,
-  username: "user2",
-  password: "user2#123",
-});
-
-user2.save();
-
-console.log(db.select("users"));
+console.log(user1);
+let object1 = {
+  id: 5,
+  user: "user1",
+  event: "event1",
+};
+console.log(user1.purchaseTicket(object1));
 
 // class Event {
 //   constructor(obj) {
@@ -106,16 +122,6 @@ console.log(db.select("users"));
 //     this.ticketsavailable = obj.ticketsavailable;
 //     this.ticketprice = obj.ticketprice;
 //     this.tickets = [];
-//   }
-// }
-
-// class Ticket {
-//   constructor(obj) {
-//     this.id = obj.id;
-//     this.user = obj.user;
-//     this.event = obj.event;
-//     this.ticketNumber = obj.ticketNumber;
-//     this.payment = obj.payment;
 //   }
 // }
 
