@@ -304,7 +304,7 @@ const payment = new Payment(db, paymentData);
 //   event: "event1",
 //   ticketNumber: "A123",
 //   payment: payment.id,
-// };
+// };git stati
 const ticket = new Ticket(db, ticketData);
 const bookingResult = ticket.getTicket(payment.id);
 
