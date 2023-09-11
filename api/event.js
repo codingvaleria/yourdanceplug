@@ -1,28 +1,29 @@
+import db from '.db.js';
 class Event {
   constructor(db, obj) {
     this.db = db;
     this.id = obj.id;
-    this.eventname = obj.eventname;
+    this.eventName = obj.eventName;
     this.location = obj.location;
     this.category = obj.category;
     this.poster = obj.poster;
     this.description = obj.description;
-    this.eventdate = obj.eventdate;
-    this.ticketsavailable = obj.ticketsavailable;
-    this.ticketprice = obj.ticketprice;
+    this.eventDate = obj.eventDate;
+    this.ticketsAvailable = obj.ticketsAvailable;
+    this.ticketPrice = obj.ticketPrice;
     this.tickets = [];
   }
 
-  createEvent() {
+  saveEvent() {
     const newEvent = {
-      eventname: this.eventname,
+      eventName: this.eventName,
       location: this.location,
       category: this.category,
       poster: this.poster,
       description: this.description,
-      eventdate: this.eventdate,
-      ticketsavailable: this.ticketsavailable,
-      ticketprice: this.ticketprice,
+      eventDate: this.eventDate,
+      ticketsAvailable: this.ticketsAvailable,
+      ticketPrice: this.ticketPrice,
       tickets: [],
     };
 
@@ -45,20 +46,30 @@ class Event {
     return event;
   }
 
+  static findAll(db) {
+    let eventObjects = db.select("events");
+    let events = [];
+    for (let i = 0; i < eventObjects.length; i++) {
+      let event = new Event(db, eventObjects[i]);
+      events.push(event);
+    }
+    return events;
+  }
+
   deleteEvent() {
     this.db.delete("events", this.id);
   }
 }
 // Create Event
 let event1 = new Event(db, {
-  eventname: "event1",
+  eventName: "event1",
   location: "location1",
   category: "social",
   poster: "event1poster",
   description: "event1description",
-  eventdate: "event1date",
-  ticketsavailable: "ticketsavailable",
-  ticketprice: "ticket1price",
+  eventDate: "event1date",
+  ticketsAvailable: "ticketsAvailable",
+  ticketPrice: "ticket1price",
   tickets: [],
 });
 

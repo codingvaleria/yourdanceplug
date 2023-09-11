@@ -48,10 +48,4 @@ class InMemoryDatabase {
 
 const db = new InMemoryDatabase();
 
-
-
-
-
-
-
-
+export default db;
