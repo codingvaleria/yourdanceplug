@@ -1,4 +1,4 @@
-import db from '.db.js';
+import db from "./db.js";
 class Event {
   constructor(db, obj) {
     this.db = db;
@@ -34,7 +34,7 @@ class Event {
   updateEvent(updatedData) {
     let isUpdated = this.db.update("events", this.id, updatedData);
     if (isUpdated === true) {
-      return Event.findById(this.db, this.id);
+      return Event.viewEvent(this.db, this.id);
     } else {
       return null;
     }
@@ -57,6 +57,7 @@ class Event {
   }
 
   deleteEvent() {
+ 
     this.db.delete("events", this.id);
   }
 }
@@ -72,5 +73,23 @@ let event1 = new Event(db, {
   ticketPrice: "ticket1price",
   tickets: [],
 });
+event1.saveEvent();
 
-console.log(event1);
+let event2 = new Event(db, {
+  eventName: "event1",
+  location: "location1",
+  category: "social",
+  poster: "event1poster",
+  description: "event1description",
+  eventDate: "event1date",
+  ticketsAvailable: "ticketsAvailable",
+  ticketPrice: "ticket1price",
+  tickets: [],
+});
+event2.saveEvent();
+
+// // console.log(event1);
+// // console.log(event1.saveEvent());
+// // console.log(event1.updateEvent({ category: "festival" }));
+// event2.deleteEvent();
+// console.log(Event.findAll(db));

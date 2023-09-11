@@ -44,6 +44,18 @@ class InMemoryDatabase {
     this.lastIds[tableName] = nextId;
     return nextId;
   }
+
+  delete(tableName, id) {
+    const table = this.tables[tableName];
+    if (table) {
+      const index = table.findIndex((entry) => entry.id === id);
+      if (index !== -1) {
+        table.splice(index, 1);
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 const db = new InMemoryDatabase();
