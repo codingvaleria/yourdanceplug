@@ -1,49 +1,44 @@
+import db from "./db.js";
 class User {
   constructor(db, obj) {
     this.db = db;
     this.id = obj.id;
     this.username = obj.username;
     this.password = obj.password;
-    this.tickets = [];
   }
 
-  addUser() {
-    const existingUser = this.db.selectById("users", this.id);
-
-    if (existingUser) {
-      const updatedUserData = {
-        id: this.id,
-        username: this.username,
-        password: this.password,
-        tickets: this.tickets,
-      };
-      this.db.update("users", this.id, updatedUserData);
-    } else {
-      const newUser = {
-        id: this.id,
-        username: this.username,
-        password: this.password,
-        tickets: this.tickets,
-      };
-      this.db.insert("users", newUser);
-    }
-  }
-
-  updateUser() {
-    const updatedUserData = {
+  saveUser() {
+    let id = this.db.insert("users", {
       id: this.id,
       username: this.username,
       password: this.password,
-      tickets: this.tickets,
-    };
-    this.db.update("users", this.id, updatedUserData);
+    });
+    this.id = id;
   }
 
-  purchaseTicket(obj) {
-    const ticket = new Ticket(db, obj);
-    this.tickets.push(ticket);
-    this.updateUser();
-    return ticket;
+  updateUser(data) {
+    let isUpdated = this.db.update("users", this.id, data);
+    if (isUpdated === true) {
+      return User.viewUser(this.db, this.id);
+    } else {
+      return null;
+    }
+  }
+
+  static viewUser(db, id) {
+    let userObj = db.selectById("users", id);
+    let user = new User(db, userObj);
+    return user;
+  }
+
+  static findAll(db) {
+    let userObjects = db.select("users");
+    let users = [];
+    for (let i = 0; i < userObjects.length; i++) {
+      let user = new User(db, userObjects[i]);
+      users.push(user);
+    }
+    return users;
   }
 
   login(password) {
@@ -54,9 +49,11 @@ class User {
     }
   }
 
+  logout() {}
+
   changePassword(newPassword) {
     this.password = newPassword;
-    this.updateUser();
+    this.updateUser(thi.password);
   }
 }
 // Create User
@@ -66,16 +63,22 @@ let user1 = new User(db, {
   password: "user123",
 });
 
-console.log(user1);
-let object1 = {
-  id: 5,
-  user: "user1",
-  event: "event1",
-};
-console.log(user1.purchaseTicket(object1));
-user1.username = "valeria";
-console.log(user1);
+// // console.log(user1);
+// user1.saveUser();
+// // console.log(user1.updateUser({ password: "fgh" }));
+// // console.log(user1);
 
-console.log(user1.login("dffg"));
-user1.changePassword("hdjks");
-console.log(user1);
+// let user2 = new User(db, {
+//   username: "user2",
+//   password: "user234",
+// });
+// user2.saveUser();
+// // // console.log(user2);
+// console.log(User.findAll(db));
+// // console.log(User.viewUser(db, 1))
+
+// // // console.log(user1);
+
+// // // console.log(user1.login("dffg"));
+// // // user1.changePassword("hdjks");
+// // // console.log(user1);
