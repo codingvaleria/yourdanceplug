@@ -65,36 +65,27 @@ class Event {
       .select("tickets")
       .filter((ticket) => ticket.event === this.id);
   }
+
+  eventTickets() {
+    return this.getEventTickets();
+  }
 }
 // Create Event
 let event1 = new Event(db, {
+  id: 1,
   eventName: "event1",
   location: "location1",
   category: "social",
   poster: "event1poster",
   description: "event1description",
   eventDate: "event1date",
-  ticketsAvailable: "ticketsAvailable",
+  ticketsAvailable: 100,
   ticketPrice: "ticket1price",
   tickets: [],
 });
 event1.saveEvent();
 
-let event2 = new Event(db, {
-  eventName: "event1",
-  location: "location1",
-  category: "social",
-  poster: "event1poster",
-  description: "event1description",
-  eventDate: "event1date",
-  ticketsAvailable: "ticketsAvailable",
-  ticketPrice: "ticket1price",
-  tickets: [],
-});
-event2.saveEvent();
+const eventTickets = event1.eventTickets();
+console.log("Event Tickets:", eventTickets);
 
-// // console.log(event1);
-// // console.log(event1.saveEvent());
-// // console.log(event1.updateEvent({ category: "festival" }));
-// event2.deleteEvent();
-// console.log(Event.findAll(db));
+export {Event, event1}

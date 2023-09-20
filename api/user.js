@@ -53,7 +53,11 @@ class User {
 
   changePassword(newPassword) {
     this.password = newPassword;
-    this.updateUser(thi.password);
+    this.updateUser(this.password);
+  }
+
+  bookTicket(ticketId) {
+    this.tickets.push(ticketId);
   }
 
   getUserBookedEvents() {

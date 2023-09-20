@@ -1,3 +1,7 @@
+import { event1 } from "./event.js";
+import Event from "./event.js";
+import db from "./db.js";
+
 class Ticket {
   constructor(db, obj) {
     this.db = db;
@@ -14,6 +18,9 @@ class Ticket {
     };
 
     this.db.insert("tickets", newTicket);
+
+    const event = Event.viewEvent(this.db, this.event);
+    event.tickets.push(this.id);
   }
 
   viewTicket() {
@@ -21,7 +28,7 @@ class Ticket {
   }
 
   getTicket(payment) {
-    if (this.ticketsavailable > 0) {
+    if (this.ticketsAvailable > 0) {
       const newTicket = {
         id: this.id,
         user: this.user,
@@ -31,9 +38,9 @@ class Ticket {
       };
 
       this.db.insert("tickets", newTicket);
-      this.ticketsavailable -= 1;
+      this.ticketsAvailable -= 1;
       this.db.update("events", this.event, {
-        ticketsavailable: this.ticketsavailable,
+        ticketsAvailable: this.ticketsAvailable,
       });
       return newTicket;
     } else {
@@ -47,14 +54,8 @@ const ticketData = {
   id: 1,
   user: "user1",
   event: event1.id,
-  ticketNumber: "A123",
-  payment: null,
 };
 
 const ticket1 = new Ticket(db, ticketData);
 
 ticket1.createTicket();
-
-const createdTicket = ticket1.viewTicket();
-
-console.log("Created Ticket:", createdTicket);
