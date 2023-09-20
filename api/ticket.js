@@ -4,8 +4,6 @@ class Ticket {
     this.id = obj.id;
     this.user = obj.user;
     this.event = obj.event;
-    this.ticketNumber = obj.ticketNumber; //how do I let the system to generate ticket numbers on its own?
-    this.payment = obj.payment;
   }
 
   createTicket() {
@@ -13,8 +11,6 @@ class Ticket {
       id: this.id,
       user: this.user,
       event: this.event,
-      ticketNumber: this.ticketNumber,
-      payment: this.payment,
     };
 
     this.db.insert("tickets", newTicket);
