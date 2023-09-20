@@ -55,6 +55,16 @@ class User {
     this.password = newPassword;
     this.updateUser(thi.password);
   }
+
+  getUserBookedEvents() {
+    const userTickets = this.db
+      .select("tickets")
+      .filter((ticket) => ticket.user === this.id);
+    const bookedEventIds = userTickets.map((ticket) => ticket.event);
+    return this.db
+      .select("events")
+      .filter((event) => bookedEventIds.includes(event.id));
+  }
 }
 // Create User
 let user1 = new User(db, {

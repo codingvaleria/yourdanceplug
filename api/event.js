@@ -57,8 +57,13 @@ class Event {
   }
 
   deleteEvent() {
- 
     this.db.delete("events", this.id);
+  }
+
+  getEventTickets() {
+    return this.db
+      .select("tickets")
+      .filter((ticket) => ticket.event === this.id);
   }
 }
 // Create Event
