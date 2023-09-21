@@ -8,6 +8,7 @@ class Ticket {
     this.id = obj.id;
     this.user = obj.user;
     this.event = obj.event;
+    this.ticketNumber = obj.ticketNumber;
   }
 
   createTicket() {
@@ -15,6 +16,7 @@ class Ticket {
       id: this.id,
       user: this.user,
       event: this.event,
+      ticketNumber: this.ticketNumber,
     };
 
     this.db.insert("tickets", newTicket);
@@ -57,6 +59,7 @@ const ticketData = {
   id: 1,
   user: "user1",
   event: event1.id,
+  ticketNumber: "T12345",
 };
 
 const ticket1 = new Ticket(db, ticketData);
