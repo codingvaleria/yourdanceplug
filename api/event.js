@@ -34,19 +34,29 @@ class Event {
   updateEvent(updatedData) {
     let isUpdated = this.db.update("events", this.id, updatedData);
     if (isUpdated === true) {
-      return Event.viewEvent(this.db, this.id);
+      return this.viewEvent(this.db, this.id);
     } else {
       return null;
     }
   }
 
-  static viewEvent(db, id) {
-    let eventObj = db.selectById("events", id);
-    let event = new Event(db, eventObj);
-    return event;
+  deleteEvent() {
+    this.db.delete("events", this.id);
   }
 
-  static findAll(db) {
+  viewEventTickets() {
+    return this.db
+      .select("tickets")
+      .filter((ticket) => ticket.event === this.id);
+  }
+
+  // Instance-specific method to view an event
+  viewEvent() {
+    return this.db.selectById("events", this.id);
+  }
+
+  // Static method to find all events
+  static findAllEvents(db) {
     let eventObjects = db.select("events");
     let events = [];
     for (let i = 0; i < eventObjects.length; i++) {
@@ -55,21 +65,8 @@ class Event {
     }
     return events;
   }
-
-  deleteEvent() {
-    this.db.delete("events", this.id);
-  }
-
-  getEventTickets() {
-    return this.db
-      .select("tickets")
-      .filter((ticket) => ticket.event === this.id);
-  }
-
-  eventTickets() {
-    return this.getEventTickets();
-  }
 }
+
 // Create Event
 let event1 = new Event(db, {
   id: 1,
@@ -85,7 +82,7 @@ let event1 = new Event(db, {
 });
 event1.saveEvent();
 
-const eventTickets = event1.eventTickets();
+const eventTickets = event1.viewEventTickets();
 console.log("Event Tickets:", eventTickets);
 
-export {Event, event1}
+export { Event, event1 };

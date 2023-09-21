@@ -28,7 +28,9 @@ class Ticket {
   }
 
   getTicket(payment) {
-    if (this.ticketsAvailable > 0) {
+    const event = Event.viewEvent(this.db, this.event);
+
+    if (event.ticketsAvailable > 0) {
       const newTicket = {
         id: this.id,
         user: this.user,
@@ -38,9 +40,10 @@ class Ticket {
       };
 
       this.db.insert("tickets", newTicket);
-      this.ticketsAvailable -= 1;
+      event.tickets.push(this.id);
+      event.ticketsAvailable -= 1;
       this.db.update("events", this.event, {
-        ticketsAvailable: this.ticketsAvailable,
+        ticketsAvailable: event.ticketsAvailable,
       });
       return newTicket;
     } else {
