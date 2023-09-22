@@ -1,5 +1,5 @@
 import db from "./db.js";
-import Ticket from "./ticket.js";
+
 class Event {
   constructor(db, obj) {
     this.db = db;
@@ -34,8 +34,14 @@ class Event {
 
   updateEvent(updatedData) {
     let isUpdated = this.db.update("events", this.id, updatedData);
+
     if (isUpdated === true) {
-      return this.viewEvent(this.db, this.id);
+      for (const key in updatedData) {
+        if (updatedData.hasOwnProperty(key)) {
+          this[key] = updatedData[key];
+        }
+      }
+      return this;
     } else {
       return null;
     }
@@ -70,6 +76,7 @@ class Event {
   }
 }
 
+// Testing Event methods
 // Create Event
 let event1 = new Event(db, {
   id: 100,
@@ -83,16 +90,25 @@ let event1 = new Event(db, {
   ticketPrice: "ticket1price",
   tickets: [],
 });
+
 event1.saveEvent();
+// console.log("Event Saved:", event1);
 
-// Testing Event methods
-console.log("\nTesting Event Methods:");
-console.log("Event ID:", event1.id);
-console.log("Event Name:", event1.eventName);
-console.log("Event Location:", event1.location);
-console.log("Event Category:", event1.category);
+// console.log("\nTesting Event Methods:");
+// console.log("Event ID:", event1.id);
+// console.log("Event Name:", event1.eventName);
+// console.log("Event Location:", event1.location);
+// console.log("Event Category:", event1.category);
 
-const eventTickets = event1.viewEventTickets();
-console.log("Event Tickets:", eventTickets);
+// Update event
+const updatedEventData = {
+  eventName: "AfroSoul Connection",
+  location: "Movenpic Hotel & Residences",
+};
+event1.updateEvent(updatedEventData);
+console.log("Updated Event:", event1);
+
+// const eventTickets = event1.viewEventTickets();
+// console.log("Event Tickets:", eventTickets);
 
 export { Event, event1 };
