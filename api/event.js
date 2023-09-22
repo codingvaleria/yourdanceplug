@@ -1,4 +1,5 @@
 import db from "./db.js";
+import Ticket from "./ticket.js";
 class Event {
   constructor(db, obj) {
     this.db = db;
@@ -69,7 +70,7 @@ class Event {
 
 // Create Event
 let event1 = new Event(db, {
-  id: 1,
+  id: 100,
   eventName: "event1",
   location: "location1",
   category: "social",

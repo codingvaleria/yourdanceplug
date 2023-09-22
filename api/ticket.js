@@ -1,5 +1,4 @@
-import { event1 } from "./event.js";
-import Event from "./event.js";
+import { Event, event1 } from "./event.js";
 import db from "./db.js";
 
 class Ticket {
@@ -54,7 +53,7 @@ class Ticket {
   }
 }
 
-//Create a ticket
+// Create an instance of Ticket for testing
 const ticketData = {
   id: 1,
   user: "user1",
@@ -64,4 +63,11 @@ const ticketData = {
 
 const ticket1 = new Ticket(db, ticketData);
 
-ticket1.createTicket();
+// Testing Ticket methods
+console.log("Testing Ticket Methods:");
+console.log("Ticket ID:", ticket1.id);
+console.log("Ticket User:", ticket1.user);
+console.log("Ticket Event:", ticket1.event);
+console.log("Ticket Ticket Number:", ticket1.ticketNumber);
+
+export default Ticket;
