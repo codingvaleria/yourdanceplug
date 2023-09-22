@@ -85,6 +85,13 @@ let event1 = new Event(db, {
 });
 event1.saveEvent();
 
+// Testing Event methods
+console.log("\nTesting Event Methods:");
+console.log("Event ID:", event1.id);
+console.log("Event Name:", event1.eventName);
+console.log("Event Location:", event1.location);
+console.log("Event Category:", event1.category);
+
 const eventTickets = event1.viewEventTickets();
 console.log("Event Tickets:", eventTickets);
 
