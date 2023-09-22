@@ -52,8 +52,10 @@ class Event {
   }
 
   // Instance-specific method to view an event
-  viewEvent() {
-    return this.db.selectById("events", this.id);
+  static viewEvent(db, id) {
+    let eventObj = db.selectById("events", id);
+    let event = new Event(db, eventObj);
+    return event;
   }
 
   // Static method to find all events

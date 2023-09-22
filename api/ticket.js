@@ -70,4 +70,11 @@ console.log("Ticket User:", ticket1.user);
 console.log("Ticket Event:", ticket1.event);
 console.log("Ticket Ticket Number:", ticket1.ticketNumber);
 
+// Create a ticket 
+ticket1.createTicket()
+console.log("Created ticket:", ticket1);
+
+//View the created ticket
+console.log("View Ticket:", ticket1.viewTicket())
+
 export default Ticket;
