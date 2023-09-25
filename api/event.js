@@ -1,5 +1,4 @@
 import db from "./db.js";
-
 class Event {
   constructor(db, obj) {
     this.db = db;
@@ -57,14 +56,12 @@ class Event {
       .filter((ticket) => ticket.event === this.id);
   }
 
-  // Instance-specific method to view an event
   static viewEvent(db, id) {
     let eventObj = db.selectById("events", id);
     let event = new Event(db, eventObj);
     return event;
   }
 
-  // Static method to find all events
   static findAllEvents(db) {
     let eventObjects = db.select("events");
     let events = [];
@@ -92,13 +89,28 @@ let event1 = new Event(db, {
 });
 
 event1.saveEvent();
-// console.log("Event Saved:", event1);
 
-// console.log("\nTesting Event Methods:");
-// console.log("Event ID:", event1.id);
-// console.log("Event Name:", event1.eventName);
-// console.log("Event Location:", event1.location);
-// console.log("Event Category:", event1.category);
+let event2 = new Event(db, {
+  id: 100,
+  eventName: "event1",
+  location: "location1",
+  category: "social",
+  poster: "event1poster",
+  description: "event1description",
+  eventDate: "event1date",
+  ticketsAvailable: 100,
+  ticketPrice: "ticket1price",
+  tickets: [],
+});
+event2.saveEvent();
+console.log("Event Saved:", event1);
+
+// View event properties
+console.log("\nTesting Event Methods:");
+console.log("Event ID:", event1.id);
+console.log("Event Name:", event1.eventName);
+console.log("Event Location:", event1.location);
+console.log("Event Category:", event1.category);
 
 // Update event
 const updatedEventData = {
@@ -108,7 +120,14 @@ const updatedEventData = {
 event1.updateEvent(updatedEventData);
 console.log("Updated Event:", event1);
 
-// const eventTickets = event1.viewEventTickets();
-// console.log("Event Tickets:", eventTickets);
+//Find all events
+const allEvents = Event.findAllEvents(db);
+// console.log("All Events:", allEvents);
+
+const viewedEvent = Event.viewEvent(db, event2.id);
+console.log("Viewed Event:", viewedEvent);
+
+// Delete Event
+event2.deleteEvent();
 
 export { Event, event1 };
