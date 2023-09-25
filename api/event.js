@@ -91,7 +91,7 @@ let event1 = new Event(db, {
 event1.saveEvent();
 
 let event2 = new Event(db, {
-  id: 100,
+  id: 2,
   eventName: "event1",
   location: "location1",
   category: "social",
@@ -103,31 +103,36 @@ let event2 = new Event(db, {
   tickets: [],
 });
 event2.saveEvent();
-console.log("Event Saved:", event1);
+// console.log("Event Saved:", event1);
 
-// View event properties
-console.log("\nTesting Event Methods:");
-console.log("Event ID:", event1.id);
-console.log("Event Name:", event1.eventName);
-console.log("Event Location:", event1.location);
-console.log("Event Category:", event1.category);
+// // View event properties
+// console.log("\nTesting Event Methods:");
+// console.log("Event ID:", event1.id);
+// console.log("Event Name:", event1.eventName);
+// console.log("Event Location:", event1.location);
+// console.log("Event Category:", event1.category);
 
-// Update event
-const updatedEventData = {
-  eventName: "AfroSoul Connection",
-  location: "Movenpic Hotel & Residences",
-};
-event1.updateEvent(updatedEventData);
-console.log("Updated Event:", event1);
+// // Update event
+// const updatedEventData = {
+//   eventName: "AfroSoul Connection",
+//   location: "Movenpic Hotel & Residences",
+// };
+// event1.updateEvent(updatedEventData);
+// console.log("Updated Event:", event1);
 
-//Find all events
-const allEvents = Event.findAllEvents(db);
-// console.log("All Events:", allEvents);
+// //Find all events
+// const allEvents = Event.findAllEvents(db);
+// // console.log("All Events:", allEvents);
 
-const viewedEvent = Event.viewEvent(db, event2.id);
-console.log("Viewed Event:", viewedEvent);
+// View event tickets
+const eventTickets = event1.viewEventTickets();
+console.log("Event Tickets:", eventTickets);
 
-// Delete Event
-event2.deleteEvent();
+// View event
+// const viewedEvent = Event.viewEvent(db, event2.id);
+// console.log("Viewed Event:", viewedEvent);
 
-export { Event, event1 };
+// // Delete Event
+// event2.deleteEvent();
+
+// export { Event, event1 };
