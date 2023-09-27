@@ -25,8 +25,9 @@ class InMemoryDatabase {
     const table = this.tables[tableName];
     if (table) {
       const entry = table.find((entry) => entry.id === id);
+      const now = new Date().toString();
       if (entry) {
-        Object.assign(entry, data);
+        Object.assign(entry, { ...data, updatedAt: now });
         return true;
       }
     }
@@ -39,7 +40,8 @@ class InMemoryDatabase {
       this.lastIds[tableName] = 0;
     }
     const nextId = this.lastIds[tableName] + 1;
-    const entry = { id: nextId, ...data };
+    const now = new Date().toString();
+    const entry = { id: nextId, ...data, createdAt: now, updatedAt: now };
     this.tables[tableName].push(entry);
     this.lastIds[tableName] = nextId;
     return nextId;
