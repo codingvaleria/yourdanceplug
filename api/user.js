@@ -7,16 +7,19 @@ class User {
     this.password = obj.password;
   }
 
-  saveUser() {
-    let id = this.db.insert("users", {
-      id: this.id,
-      username: this.username,
-      password: this.password,
+  static saveUser(db, obj) {
+    const now = new Date().toString();
+    let id = db.insert("users", {
+      username: obj.username,
+      password: obj.password,
+      created_at: now,
+      updated_at: now
     });
-    this.id = id;
+    return new User(db, { id, ...obj });
   }
 
   updateUser(data) {
+    const now = new Date().toString();
     let isUpdated = this.db.update("users", this.id, data);
     if (isUpdated === true) {
       return User.viewUser(this.db, this.id);
@@ -72,13 +75,12 @@ class User {
 }
 // Create User
 let user1 = new User(db, {
-  id: 1,
   username: "user1",
   password: "user123",
 });
 
-// // console.log(user1);
-// user1.saveUser();
+console.log(user1);
+
 // // console.log(user1.updateUser({ password: "fgh" }));
 // // console.log(user1);
 
