@@ -8,27 +8,26 @@ class User {
   }
 
   static saveUser(db, obj) {
-    const now = new Date().toString();
+   
     let id = db.insert("users", {
       username: obj.username,
       password: obj.password,
-      created_at: now,
-      updated_at: now
+      
     });
     return new User(db, { id, ...obj });
   }
 
   updateUser(data) {
-    const now = new Date().toString();
+   
     let isUpdated = this.db.update("users", this.id, data);
     if (isUpdated === true) {
-      return User.viewUser(this.db, this.id);
+      return User.getUser(this.db, this.id);
     } else {
       return null;
     }
   }
 
-  static viewUser(db, id) {
+  static getUser(db, id) {
     let userObj = db.selectById("users", id);
     let user = new User(db, userObj);
     return user;
@@ -36,19 +35,14 @@ class User {
 
   static findAll(db) {
     let userObjects = db.select("users");
-    let users = [];
-    for (let i = 0; i < userObjects.length; i++) {
-      let user = new User(db, userObjects[i]);
-      users.push(user);
-    }
-    return users;
+    return userObjects.map((userObj) => new User(db, userObj));
   }
 
   login(password) {
     if (this.password === password) {
       return true;
     } else {
-      return "invalid password";
+      return false;
     }
   }
 
@@ -57,10 +51,6 @@ class User {
   changePassword(newPassword) {
     this.password = newPassword;
     this.updateUser(this.password);
-  }
-
-  bookTicket(ticketId) {
-    this.tickets.push(ticketId);
   }
 
   getUserBookedEvents() {
@@ -91,7 +81,7 @@ console.log(user1);
 // user2.saveUser();
 // // // console.log(user2);
 // console.log(User.findAll(db));
-// // console.log(User.viewUser(db, 1))
+// // console.log(User.getUser(db, 1))
 
 // // // console.log(user1);
 

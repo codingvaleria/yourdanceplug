@@ -14,21 +14,21 @@ class Event {
     this.tickets = [];
   }
 
-  saveEvent() {
+  static saveEvent(db, obj) {
     const newEvent = {
-      eventName: this.eventName,
-      location: this.location,
-      category: this.category,
-      poster: this.poster,
-      description: this.description,
-      eventDate: this.eventDate,
-      ticketsAvailable: this.ticketsAvailable,
-      ticketPrice: this.ticketPrice,
+      eventName: obj.eventName,
+      location: obj.location,
+      category: obj.category,
+      poster: obj.poster,
+      description: obj.description,
+      eventDate: obj.eventDate,
+      ticketsAvailable: obj.ticketsAvailable,
+      ticketPrice: obj.ticketPrice,
       tickets: [],
     };
 
-    let id = this.db.insert("events", newEvent);
-    this.id = id;
+    let id = db.insert("events", newEvent);
+    return new Event(db, { id, ...obj });
   }
 
   updateEvent(updatedData) {
