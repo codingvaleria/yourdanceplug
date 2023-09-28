@@ -35,7 +35,7 @@ class User {
       .select("tickets")
       .filter((ticket) => ticket.user === this.id);
   }
-  
+
   static findAll(db) {
     let userObjects = db.select("users");
     return userObjects.map((userObj) => new User(db, userObj));
@@ -51,11 +51,6 @@ class User {
 
   logout() {}
 
-  changePassword(newPassword) {
-    this.password = newPassword;
-    this.updateUser(this.password);
-  }
-
   getUserBookedEvents() {
     const userTickets = this.db
       .select("tickets")
@@ -66,28 +61,39 @@ class User {
       .filter((event) => bookedEventIds.includes(event.id));
   }
 }
-// Create User
-let user1 = new User(db, {
-  username: "user1",
+
+// Create user
+const user1 = User.saveUser(db, {
+  username: "User1",
   password: "user123",
 });
 
-console.log(user1);
+// console.log("Created User:", user1);
 
-// // console.log(user1.updateUser({ password: "fgh" }));
-// // console.log(user1);
+const user2 = User.saveUser(db, {
+  username: "User2",
+  password: "user234",
+});
+// console.log("Created User:", user2);
 
-// let user2 = new User(db, {
-//   username: "user2",
-//   password: "user234",
-// });
-// user2.saveUser();
-// // // console.log(user2);
-// console.log(User.findAll(db));
-// // console.log(User.getUser(db, 1))
+// Find all users
+const allUsers = User.findAll(db);
+// console.log("All USers:", allUsers)
 
-// // // console.log(user1);
+// Get a user by ID
+const userId = 2;
+const foundUSer = User.getUser(db, userId);
+// console.log("Found User:", foundUSer)
 
-// // // console.log(user1.login("dffg"));
-// // // user1.changePassword("hdjks");
-// // // console.log(user1);
+// Update User
+const updateUserData = {
+  username: "Valeria",
+};
+const updatedUser = foundUSer.updateUser(updateUserData);
+// console.log("Updated User:", updatedUser)
+
+// Get user's booked events
+const userBookedEvents = foundUSer.getUserBookedEvents();
+console.log("Booked Events:", userBookedEvents);
+
+export default { User, user1 };
