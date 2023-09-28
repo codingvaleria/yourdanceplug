@@ -1,4 +1,5 @@
 import db from "./db.js";
+import Ticket from "./ticket.js";
 class User {
   constructor(db, obj) {
     this.db = db;
@@ -15,6 +16,17 @@ class User {
     return new User(db, { id, ...obj });
   }
 
+  static getUser(db, id) {
+    let userObj = db.selectById("users", id);
+    let user = new User(db, userObj);
+    return user;
+  }
+
+  static findAll(db) {
+    let userObjects = db.select("users");
+    return userObjects.map((userObj) => new User(db, userObj));
+  }
+
   updateUser(data) {
     let isUpdated = this.db.update("users", this.id, data);
     if (isUpdated === true) {
@@ -22,23 +34,6 @@ class User {
     } else {
       return null;
     }
-  }
-
-  static getUser(db, id) {
-    let userObj = db.selectById("users", id);
-    let user = new User(db, userObj);
-    return user;
-  }
-
-  getUserTickets() {
-    return this.db
-      .select("tickets")
-      .filter((ticket) => ticket.user === this.id);
-  }
-
-  static findAll(db) {
-    let userObjects = db.select("users");
-    return userObjects.map((userObj) => new User(db, userObj));
   }
 
   login(password) {
@@ -50,16 +45,6 @@ class User {
   }
 
   logout() {}
-
-  getUserBookedEvents() {
-    const userTickets = this.db
-      .select("tickets")
-      .filter((ticket) => ticket.user === this.id);
-    const bookedEventIds = userTickets.map((ticket) => ticket.event);
-    return this.db
-      .select("events")
-      .filter((event) => bookedEventIds.includes(event.id));
-  }
 }
 
 // Create user
@@ -92,8 +77,4 @@ const updateUserData = {
 const updatedUser = foundUSer.updateUser(updateUserData);
 // console.log("Updated User:", updatedUser)
 
-// Get user's booked events
-const userBookedEvents = foundUSer.getUserBookedEvents();
-console.log("Booked Events:", userBookedEvents);
 
-export default { User, user1 };
