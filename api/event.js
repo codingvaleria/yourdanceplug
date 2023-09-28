@@ -1,4 +1,5 @@
 import db from "./db.js";
+import { User, user1 } from "./user.js";
 class Event {
   constructor(db, obj) {
     this.db = db;
@@ -59,7 +60,6 @@ class Event {
       .filter((event) => bookedEventIds.includes(event.id));
   }
 
-
   static getEvent(db, id) {
     let eventObj = db.selectById("events", id);
     let event = new Event(db, eventObj);
@@ -80,7 +80,6 @@ class Event {
 // Testing Event methods
 // Create Event
 let event1 = Event.saveEvent(db, {
-
   eventName: "event1",
   location: "location1",
   category: "social",
@@ -92,7 +91,6 @@ let event1 = Event.saveEvent(db, {
 });
 
 let event2 = Event.saveEvent(db, {
-  
   eventName: "event2",
   location: "location2",
   category: "social",
@@ -117,8 +115,6 @@ console.log("All Events:", allEvents);
 const eventId = 2;
 const foundEvent = Event.getEvent(db, eventId);
 // console.log("Found Event:", foundEvent);
-
-
 
 // // Delete Event
 // event2.deleteEvent();

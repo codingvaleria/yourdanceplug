@@ -1,5 +1,5 @@
 import { Event, event1 } from "./event.js";
-import { User, user1 } from "./event.js";
+import { User, user1 } from "./user.js";
 import db from "./db.js";
 
 class Ticket {
@@ -46,7 +46,9 @@ class Ticket {
   }
 
   getTicketsByEventId() {
-    
+    return this.db
+      .select("tickets")
+      .filter((ticket) => ticket.event === eventId);
   }
 }
 
@@ -68,19 +70,13 @@ const ticketData2 = {
 const ticket1 = new Ticket(db, ticketData);
 const ticket2 = new Ticket(db, ticketData2);
 
-// Testing Ticket methods
-console.log("Testing Ticket Methods:");
-console.log("Ticket ID:", ticket1.id);
-console.log("Ticket User:", ticket1.user);
-console.log("Ticket Event:", ticket1.event);
-console.log("Ticket Ticket Number:", ticket1.ticketNumber);
 
-// Create a ticket
-ticket1.createTicket();
-ticket2.createTicket();
-// console.log("Created ticket:", ticket1);
 
-//View the created ticket
-console.log("View Ticket:", ticket1.viewTicket());
+
+// //View the created ticket
+// console.log("View Ticket:", ticket1.viewTicket());
+
+const event1Tickets = ticket1.getTicketsByEventId(event1.id);
+console.log("Tickets for event1:", event1Tickets);
 
 export default Ticket;

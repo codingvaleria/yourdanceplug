@@ -77,4 +77,4 @@ const updateUserData = {
 const updatedUser = foundUSer.updateUser(updateUserData);
 // console.log("Updated User:", updatedUser)
 
-
+export { User, user1 };
