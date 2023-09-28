@@ -11,7 +11,6 @@ class Event {
     this.eventDate = obj.eventDate;
     this.ticketsAvailable = obj.ticketsAvailable;
     this.ticketPrice = obj.ticketPrice;
-    this.tickets = [];
   }
 
   static saveEvent(db, obj) {
@@ -50,13 +49,23 @@ class Event {
     this.db.delete("events", this.id);
   }
 
-  viewEventTickets() {
+  getEventsByUserId() {
+    const userTickets = this.db
+      .select("tickets")
+      .filter((ticket) => ticket.user === this.id);
+    const bookedEventIds = userTickets.map((ticket) => ticket.event);
+    return this.db
+      .select("events")
+      .filter((event) => bookedEventIds.includes(event.id));
+  }
+
+  getEventTickets() {
     return this.db
       .select("tickets")
       .filter((ticket) => ticket.event === this.id);
   }
 
-  static viewEvent(db, id) {
+  static getEvent(db, id) {
     let eventObj = db.selectById("events", id);
     let event = new Event(db, eventObj);
     return event;
@@ -75,8 +84,8 @@ class Event {
 
 // Testing Event methods
 // Create Event
-let event1 = new Event(db, {
-  id: 100,
+let event1 = Event.saveEvent(db, {
+
   eventName: "event1",
   location: "location1",
   category: "social",
@@ -85,54 +94,45 @@ let event1 = new Event(db, {
   eventDate: "event1date",
   ticketsAvailable: 100,
   ticketPrice: "ticket1price",
-  tickets: [],
 });
 
-event1.saveEvent();
-
-let event2 = new Event(db, {
-  id: 2,
-  eventName: "event1",
-  location: "location1",
+let event2 = Event.saveEvent(db, {
+  
+  eventName: "event2",
+  location: "location2",
   category: "social",
-  poster: "event1poster",
-  description: "event1description",
-  eventDate: "event1date",
-  ticketsAvailable: 100,
-  ticketPrice: "ticket1price",
-  tickets: [],
+  poster: "event2poster",
+  description: "event2description",
+  eventDate: "event2date",
+  ticketsAvailable: 80,
+  ticketPrice: "ticket2price",
 });
-event2.saveEvent();
+
 // console.log("Event Saved:", event1);
 
-// // View event properties
-// console.log("\nTesting Event Methods:");
-// console.log("Event ID:", event1.id);
-// console.log("Event Name:", event1.eventName);
-// console.log("Event Location:", event1.location);
-// console.log("Event Category:", event1.category);
+// Update event
+const updatedEvent = event1.updateEvent({ eventName: "Afrosoul Connection" });
+// console.log(updatedEvent);
 
-// // Update event
-// const updatedEventData = {
-//   eventName: "AfroSoul Connection",
-//   location: "Movenpic Hotel & Residences",
-// };
-// event1.updateEvent(updatedEventData);
-// console.log("Updated Event:", event1);
+// Find all events
+const allEvents = Event.findAllEvents(db);
+console.log("All Events:", allEvents);
 
-// //Find all events
-// const allEvents = Event.findAllEvents(db);
-// // console.log("All Events:", allEvents);
+// Get event
+const eventId = 2;
+const foundEvent = Event.getEvent(db, eventId);
+// console.log("Found Event:", foundEvent);
 
-// View event tickets
-const eventTickets = event1.viewEventTickets();
-console.log("Event Tickets:", eventTickets);
-
-// View event
-// const viewedEvent = Event.viewEvent(db, event2.id);
-// console.log("Viewed Event:", viewedEvent);
+// Get event tickets
+const eventTickets = foundEvent.getEventTickets();
+console.log("Event Tickets:");
+eventTickets.forEach((ticket) => {
+  console.log("Ticket ID:", ticket.id);
+  console.log("User:", ticket.user);
+  console.log("Ticket Number:", ticket.ticketNumber);
+});
 
 // // Delete Event
 // event2.deleteEvent();
 
-// export { Event, event1 };
+export { Event, event1 };
