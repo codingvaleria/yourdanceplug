@@ -8,17 +8,14 @@ class User {
   }
 
   static saveUser(db, obj) {
-   
     let id = db.insert("users", {
       username: obj.username,
       password: obj.password,
-      
     });
     return new User(db, { id, ...obj });
   }
 
   updateUser(data) {
-   
     let isUpdated = this.db.update("users", this.id, data);
     if (isUpdated === true) {
       return User.getUser(this.db, this.id);
@@ -33,6 +30,12 @@ class User {
     return user;
   }
 
+  getUserTickets() {
+    return this.db
+      .select("tickets")
+      .filter((ticket) => ticket.user === this.id);
+  }
+  
   static findAll(db) {
     let userObjects = db.select("users");
     return userObjects.map((userObj) => new User(db, userObj));
