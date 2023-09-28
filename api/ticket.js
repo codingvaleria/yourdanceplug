@@ -11,29 +11,6 @@ class Ticket {
     this.ticketNumber = obj.ticketNumber;
   }
 
-  createTicket() {
-    const newTicket = {
-      id: this.id,
-      user: this.user,
-      event: this.event,
-      ticketNumber: this.ticketNumber,
-    };
-
-    this.db.insert("tickets", newTicket);
-
-    const event = Event.viewEvent(this.db, this.event);
-    event.tickets.push(this.id);
-    event.ticketsAvailable -= 1;
-    this.db.update("events", this.event, {
-      ticketsAvailable: event.ticketsAvailable,
-      tickets: event.tickets,
-    });
-  }
-
-  viewTicket() {
-    return this.db.selectById("tickets", this.id);
-  }
-
   static purchaseTicket(db, userId, eventId, ticketNumber) {
     const event = db.selectById("events", eventId);
 
@@ -58,10 +35,18 @@ class Ticket {
     }
   }
 
+  viewTicket() {
+    return this.db.selectById("tickets", this.id);
+  }
+
   getTicketsByUserId() {
     return this.db
       .select("tickets")
       .filter((ticket) => ticket.user === this.id);
+  }
+
+  getTicketsByEventId() {
+    
   }
 }
 

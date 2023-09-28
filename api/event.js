@@ -59,11 +59,6 @@ class Event {
       .filter((event) => bookedEventIds.includes(event.id));
   }
 
-  getEventTickets() {
-    return this.db
-      .select("tickets")
-      .filter((ticket) => ticket.event === this.id);
-  }
 
   static getEvent(db, id) {
     let eventObj = db.selectById("events", id);
@@ -123,14 +118,7 @@ const eventId = 2;
 const foundEvent = Event.getEvent(db, eventId);
 // console.log("Found Event:", foundEvent);
 
-// Get event tickets
-const eventTickets = foundEvent.getEventTickets();
-console.log("Event Tickets:");
-eventTickets.forEach((ticket) => {
-  console.log("Ticket ID:", ticket.id);
-  console.log("User:", ticket.user);
-  console.log("Ticket Number:", ticket.ticketNumber);
-});
+
 
 // // Delete Event
 // event2.deleteEvent();
