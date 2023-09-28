@@ -1,4 +1,5 @@
 import { Event, event1 } from "./event.js";
+import { User, user1 } from "./event.js";
 import db from "./db.js";
 
 class Ticket {
@@ -33,40 +34,54 @@ class Ticket {
     return this.db.selectById("tickets", this.id);
   }
 
-  getTicket(payment) {
-    const event = Event.viewEvent(this.db, this.event);
+  static purchaseTicket(db, userId, eventId, ticketNumber) {
+    const event = db.selectById("events", eventId);
 
     if (event.ticketsAvailable > 0) {
       const newTicket = {
-        id: this.id,
-        user: this.user,
-        event: this.event,
-        ticketNumber: this.ticketNumber,
-        payment: payment,
+        user: userId,
+        event: eventId,
+        ticketNumber: ticketNumber,
       };
 
-      this.db.insert("tickets", newTicket);
-      event.tickets.push(this.id);
+      const ticketId = db.insert("tickets", newTicket);
+      event.tickets.push(ticketId);
       event.ticketsAvailable -= 1;
-      this.db.update("events", this.event, {
+      db.update("events", eventId, {
         ticketsAvailable: event.ticketsAvailable,
       });
-      return newTicket;
+
+      const createdTicket = db.selectById("tickets", ticketId);
+      return new Ticket(db, createdTicket);
     } else {
-      return "No tickets available.";
+      return "False";
     }
+  }
+
+  getTicketsByUserId() {
+    return this.db
+      .select("tickets")
+      .filter((ticket) => ticket.user === this.id);
   }
 }
 
 // Create an instance of Ticket for testing
 const ticketData = {
   id: 1,
-  user: "user1",
+  user: user1.id,
   event: event1.id,
   ticketNumber: "T12345",
 };
 
+const ticketData2 = {
+  id: 2,
+  user: user1.id,
+  event: 2,
+  ticketNumber: "T54321",
+};
+
 const ticket1 = new Ticket(db, ticketData);
+const ticket2 = new Ticket(db, ticketData2);
 
 // Testing Ticket methods
 console.log("Testing Ticket Methods:");
@@ -77,7 +92,8 @@ console.log("Ticket Ticket Number:", ticket1.ticketNumber);
 
 // Create a ticket
 ticket1.createTicket();
-console.log("Created ticket:", ticket1);
+ticket2.createTicket();
+// console.log("Created ticket:", ticket1);
 
 //View the created ticket
 console.log("View Ticket:", ticket1.viewTicket());
