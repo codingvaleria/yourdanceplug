@@ -1,5 +1,5 @@
 import db from "./db.js";
-import Ticket from "./ticket.js";
+
 class User {
   constructor(db, obj) {
     this.db = db;

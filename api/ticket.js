@@ -1,5 +1,5 @@
-import { Event, event1 } from "./event.js";
-import { User, user1 } from "./user.js";
+import { event1 } from "./event.js";
+import { user1 } from "./user.js";
 import db from "./db.js";
 
 class Ticket {
@@ -31,52 +31,39 @@ class Ticket {
       const createdTicket = db.selectById("tickets", ticketId);
       return new Ticket(db, createdTicket);
     } else {
-      return "False";
+      return false;
     }
   }
 
-  viewTicket() {
-    return this.db.selectById("tickets", this.id);
+  static getTicket(db, ticketId) {
+    let ticketObj = db.selectById("tickets", ticketId);
+    let ticket = new Ticket(db, ticketObj);
+    return ticket;
   }
 
-  getTicketsByUserId() {
-    return this.db
-      .select("tickets")
-      .filter((ticket) => ticket.user === this.id);
+  static getTicketsByUserId(db, userId) {
+    return db.select("tickets").filter((ticket) => ticket.user === userId);
   }
 
-  getTicketsByEventId() {
-    return this.db
-      .select("tickets")
-      .filter((ticket) => ticket.event === eventId);
+  static getTicketsByEventId(db, eventId) {
+    return db.select("tickets").filter((ticket) => ticket.event === eventId);
   }
 }
 
-// Create an instance of Ticket for testing
-const ticketData = {
-  id: 1,
-  user: user1.id,
-  event: event1.id,
-  ticketNumber: "T12345",
-};
-
-const ticketData2 = {
-  id: 2,
-  user: user1.id,
-  event: 2,
-  ticketNumber: "T54321",
-};
-
-const ticket1 = new Ticket(db, ticketData);
-const ticket2 = new Ticket(db, ticketData2);
-
-
-
-
-// //View the created ticket
-// console.log("View Ticket:", ticket1.viewTicket());
-
-const event1Tickets = ticket1.getTicketsByEventId(event1.id);
-console.log("Tickets for event1:", event1Tickets);
-
 export default Ticket;
+
+// Purchase Ticket
+const purchasedTicket = Ticket.purchaseTicket(db, user1.id, event1.id, "T1234");
+// console.log("Purchased Ticket:", purchasedTicket);
+
+// View Ticket
+let gottenTicket = Ticket.getTicket(db, purchasedTicket.id);
+// console.log("Viewed Ticket:", gottenTicket);
+
+// Get Tickets by userId
+const userTicket = Ticket.getTicketsByUserId(db, user1.id);
+// console.log("User Ticket:", userTicket);
+
+// Get Tickets by eventId
+const ticketForEvent = Ticket.getTicketsByEventId(db, event1.id)
+console.log("Event Ticket:", eventTicket);

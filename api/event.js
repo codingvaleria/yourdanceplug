@@ -50,12 +50,13 @@ class Event {
     this.db.delete("events", this.id);
   }
 
-  getEventsByUserId() {
-    const userTickets = this.db
+  static getEventsByUserId(userId) {
+    const userTickets = db
       .select("tickets")
-      .filter((ticket) => ticket.user === this.id);
+      .filter((ticket) => ticket.user === userId);
+
     const bookedEventIds = userTickets.map((ticket) => ticket.event);
-    return this.db
+    return db
       .select("events")
       .filter((event) => bookedEventIds.includes(event.id));
   }
@@ -109,12 +110,16 @@ const updatedEvent = event1.updateEvent({ eventName: "Afrosoul Connection" });
 
 // Find all events
 const allEvents = Event.findAllEvents(db);
-console.log("All Events:", allEvents);
+// console.log("All Events:", allEvents);
 
 // Get event
 const eventId = 2;
 const foundEvent = Event.getEvent(db, eventId);
 // console.log("Found Event:", foundEvent);
+
+//Get Event by UserId
+let eventByUser = Event.getEventsByUserId(user1.id);
+// console.log("Events by userId:", eventByUser);
 
 // // Delete Event
 // event2.deleteEvent();
