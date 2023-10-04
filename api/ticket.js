@@ -1,13 +1,13 @@
-import { event1 } from "./event.js";
-import { user1 } from "./user.js";
+import { event1 } from "./eventId.js";
+import { user1 } from "./userId.js";
 import db from "./db.js";
 
 class Ticket {
   constructor(db, obj) {
     this.db = db;
     this.id = obj.id;
-    this.user = obj.user;
-    this.event = obj.event;
+    this.userId = obj.userId;
+    this.eventId = obj.eventId;
     this.ticketNumber = obj.ticketNumber;
   }
 
@@ -16,8 +16,8 @@ class Ticket {
 
     if (event.ticketsAvailable > 0) {
       const newTicket = {
-        user: userId,
-        event: eventId,
+        userId: userId,
+        eventId: eventId,
         ticketNumber: ticketNumber,
       };
 
@@ -42,11 +42,11 @@ class Ticket {
   }
 
   static getTicketsByUserId(db, userId) {
-    return db.select("tickets").filter((ticket) => ticket.user === userId);
+    return db.select("tickets").filter((ticket) => ticket.userId === userId);
   }
 
   static getTicketsByEventId(db, eventId) {
-    return db.select("tickets").filter((ticket) => ticket.event === eventId);
+    return db.select("tickets").filter((ticket) => ticket.eventId === eventId);
   }
 }
 
