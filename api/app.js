@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 
 const userRoutes = require("./api/routes/users");
+const eventRoutes = require("./api/routes/events");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 
 // Routes to handle requests
 app.use("/users", userRoutes);
+app.use("/events", eventRoutes);
 
 // Handle Errors
 app.use((req, resp, next) => {
