@@ -11,8 +11,8 @@ router.get("/:userId", (req, res, next) => {
   const id = req.params.userId;
   if (id === "special") {
     res.status(200).json({
-        message: "You disovered the special ID",
-        id: id
+      message: "You disovered the special ID",
+      id: id,
     });
   } else {
     res.status(200).json({
@@ -22,8 +22,13 @@ router.get("/:userId", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
+  const user = {
+    username: req.body.username,
+  };
+
   res.status(201).json({
     message: "Users were created",
+    createdUser: user,
   });
 });
 
