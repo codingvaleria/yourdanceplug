@@ -22,8 +22,8 @@ router.get("/:userId", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  res.status(200).json({
-    message: "Handling post requests to /users",
+  res.status(201).json({
+    message: "Users were created",
   });
 });
 
